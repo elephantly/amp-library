@@ -59,11 +59,11 @@ class AmpTest extends PHPUnit_Framework_TestCase
     {
         $all_tests = array();
         foreach ($this->getTestFiles('tests/test-data/fragment-html/') as $test_filename) {
-            $all_tests[$test_filename] = [$test_filename, false];
+            $all_tests[$test_filename] = array($test_filename, false);
         }
 
         foreach ($this->getTestFiles('tests/test-data/full-html/') as $test_filename) {
-            $all_tests[$test_filename] = [$test_filename, true];
+            $all_tests[$test_filename] = array($test_filename, true);
         }
 
         return $all_tests;
