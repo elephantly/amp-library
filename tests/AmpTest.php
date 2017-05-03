@@ -57,7 +57,7 @@ class AmpTest extends PHPUnit_Framework_TestCase
 
     public function filenameProvider()
     {
-        $all_tests = [];
+        $all_tests = array();
         foreach ($this->getTestFiles('tests/test-data/fragment-html/') as $test_filename) {
             $all_tests[$test_filename] = [$test_filename, false];
         }
