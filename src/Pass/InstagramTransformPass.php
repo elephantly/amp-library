@@ -17,8 +17,8 @@
 
 namespace Lullabot\AMP\Pass;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
+use Guzzle\Http\Client;
+use Guzzle\Http\Exception\HttpException;
 use QueryPath\DOMQuery;
 
 use Lullabot\AMP\Utility\ActionTakenLine;
@@ -93,7 +93,7 @@ class InstagramTransformPass extends BasePass
             $res = $client->get('https://api.instagram.com/oembed/', [
                 'query' => ['url' => $url]
             ]);
-        } catch (GuzzleException $e) {
+        } catch (HttpException $e) {
             return $e->getMessage() . PHP_EOL . 'Could not make request to instagram oembed endpoint. Setting default height and width';
         }
 
