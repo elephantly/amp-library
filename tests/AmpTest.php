@@ -71,6 +71,7 @@ class AmpTest extends PHPUnit_Framework_TestCase
 
     protected function getTestFiles($subdirectory)
     {
+        $files = array();
         /** @var DirectoryIterator $fileitem */
         foreach (new DirectoryIterator($subdirectory) as $fileitem) {
             if (!$fileitem->isFile()) {
@@ -79,8 +80,9 @@ class AmpTest extends PHPUnit_Framework_TestCase
 
             $file_pathname = $fileitem->getPathname();
             if (preg_match('/\.html$/', $file_pathname)) {
-                yield $file_pathname;
+                $files[] = $file_pathname;
             }
         }
+        return $files;
     }
 }
