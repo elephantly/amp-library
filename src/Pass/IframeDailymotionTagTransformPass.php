@@ -95,7 +95,7 @@ class IframeDailymotionTagTransformPass extends BasePass
             unset($arr['ui-start_screen_info']);
         }
 
-        $possible_query_names = ['mute', 'endscreen-enable', 'sharing-enable', 'start', 'ui-highlight', 'ui-logo', 'info'];
+        $possible_query_names = array('mute', 'endscreen-enable', 'sharing-enable', 'start', 'ui-highlight', 'ui-logo', 'info');
         foreach ($arr as $query_name => $query_value) {
             if (in_array($query_name, $possible_query_names)) {
                 $new_dom_el->attr("data-$query_name", $query_value);

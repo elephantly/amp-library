@@ -117,7 +117,7 @@ class ObjectYouTubeTagTransformPass extends BasePass
      */
     protected function getYouTubeCode(DOMQuery $el)
     {
-        $matches = [];
+        $matches = array();
         $youtube_code = '';
         $params = $el->find('param');
 
@@ -136,18 +136,18 @@ class ObjectYouTubeTagTransformPass extends BasePass
                       (?:-nocookie)?   # youtube-nocookie.com
                       \.com            # followed by
                       \S*?             # Allow anything up to VIDEO_ID,
-                      [^\w\s-]         # but char before ID is non-ID char.
+                      array(^\w\s-]         # but char before ID is non-ID char.
                     )                  # End host alternatives.
                     ([\w-]{11})        # $1: VIDEO_ID is exactly 11 chars.
                     (?=[^\w-]|$)       # Assert next char is non-ID or EOS.
                     (?!                # Assert URL is not pre-linked.
-                      [?=&+%\w.-]*     # Allow URL (query) remainder.
+                      array(?=&+%\w.-]*     # Allow URL (query) remainder.
                       (?:              # Group pre-linked alternatives.
-                        [\'"][^<>]*>   # Either inside a start tag,
+                        array(\'"][^<>]*>   # Either inside a start tag,
                       | </a>           # or inside <a> element text contents.
                       )                # End recognized pre-linked alts.
                     )                  # End negative lookahead assertion.
-                    [?=&+%\w.-]*       # Consume any URL (query) remainder.
+                    array(?=&+%\w.-]*       # Consume any URL (query) remainder.
                     ~ix';
                 if (preg_match($pattern, $param_value, $matches)) {
                     if (!empty($matches[1])) {

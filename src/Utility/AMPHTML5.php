@@ -43,7 +43,7 @@ class AMPHTML5 extends HTML5
      * @param array $options
      * @return \DOMDocument
      */
-    public function parse(InputStream $inputstream, array $options = [])
+    public function parse(InputStream $inputstream, array $options = array())
     {
         // User options override default options in $this->options
         $final_options = array_merge($this->options, $options);

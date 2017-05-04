@@ -47,15 +47,15 @@ class Context
     protected $dom_tag = null;
     /** @var \SplObjectStorage */
     protected $tagspecs_validated;
-    protected $mandatory_alternatives_satisfied = []; // Set of strings
+    protected $mandatory_alternatives_satisfied = array(); // Set of strings
     /** @var int */
     protected $max_errors = -1;
     /** @var string */
     protected $parent_tag_name = '';
     /** @var string[] */
-    protected $ancestor_tag_names = [];
+    protected $ancestor_tag_names = array();
     /** @var string[] */
-    protected $child_tag_names = [];
+    protected $child_tag_names = array();
     protected $phase = Phase::PRE_LOCAL_PHASE;
     protected $error_scope = Scope::HTML_SCOPE;
     /** @var \SplObjectStorage */
@@ -63,17 +63,17 @@ class Context
     /** @var int */
     protected $num_tags_processed = 0;
     /** @var array */
-    protected $stats_data = [];
+    protected $stats_data = array();
     /** @var array */
-    protected $options = [];
+    protected $options = array();
     /** @var CdataMatcher */
     protected $cdata_matcher = null;
     /** @var ChildTagMatcher */
     protected $child_tag_matcher = null;
     /** @var string[] */
-    protected $component_js = [];
+    protected $component_js = array();
 
-    public static $component_mappings = [
+    public static $component_mappings = array(
         'amp-ad' => 'https://cdn.ampproject.org/v0/amp-ad-0.1.js',
         'amp-analytics' => 'https://cdn.ampproject.org/v0/amp-analytics-0.1.js',
         'amp-anim' => 'https://cdn.ampproject.org/v0/amp-anim-0.1.js',
@@ -100,7 +100,7 @@ class Context
         'amp-sidebar' => 'https://cdn.ampproject.org/v0/amp-sidebar-0.1.js',
         'amp-accordion' => 'https://cdn.ampproject.org/v0/amp-accordion-0.1.js',
         'template' => 'https://cdn.ampproject.org/v0/amp-mustache-0.1.js'
-    ];
+    );
 
     /**
      * Context constructor.
@@ -108,7 +108,7 @@ class Context
      * @param array $options
      * @param int $max_errors
      */
-    public function __construct($scope = Scope::BODY_SCOPE, $options = [], $max_errors = -1)
+    public function __construct($scope = Scope::BODY_SCOPE, $options = array(], $max_errors = -1)
     {
         $this->tagspecs_validated = new \SplObjectStorage();
         $this->max_errors = $max_errors;
@@ -244,7 +244,7 @@ class Context
 
     protected function setAncestorTagNames()
     {
-        $ancestor_tag_names = [];
+        $ancestor_tag_names = array();
         $tag = $this->dom_tag;
         while (($tag = $tag->parentNode) && !empty($tag->tagName)) {
             $ancestor_tag_names[] = mb_strtolower($tag->tagName, 'UTF-8');
@@ -255,7 +255,7 @@ class Context
 
     protected function setChildTagNames()
     {
-        $this->child_tag_names = [];
+        $this->child_tag_names = array();
         /** @var \DOMNode $child_node */
         foreach ($this->dom_tag->childNodes as $child_node) {
             if ($child_node->nodeType == XML_ELEMENT_NODE) {
@@ -413,7 +413,7 @@ class Context
      */
     public function encounteredAttributes(\DOMElement $el)
     {
-        $encountered_attributes = [];
+        $encountered_attributes = array();
         /** @var \DOMAttr $attr */
         foreach ($el->attributes as $attr) {
             $encountered_attributes[$attr->nodeName] = $attr->nodeValue;
@@ -534,15 +534,15 @@ class Context
     public function getProgress(SValidationResult $validation_result)
     {
         if ($this->max_errors === -1) {
-            return ['complete' => false, 'wants_more_errors' => true];
+            return array('complete' => false, 'wants_more_errors' => true);
         }
 
         if ($this->max_errors === 0) {
-            return ['complete' => $validation_result->status === ValidationResultStatus::FAIL, 'wants_more_errors' => false];
+            return array('complete' => $validation_result->status === ValidationResultStatus::FAIL, 'wants_more_errors' => false);
         }
 
         $wants_more_errors = count($validation_result->errors) < $this->max_errors;
-        return ['complete' => !$wants_more_errors, 'wants_more_errors' => $wants_more_errors];
+        return array('complete' => !$wants_more_errors, 'wants_more_errors' => $wants_more_errors);
     }
 
     /**

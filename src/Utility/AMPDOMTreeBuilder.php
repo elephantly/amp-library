@@ -49,7 +49,7 @@ class AMPDOMTreeBuilder extends DOMTreeBuilder
      * @param InputStream $inputstream
      * @param array $options
      */
-    public function __construct(InputStream $inputstream, array $options = [])
+    public function __construct(InputStream $inputstream, array $options = array())
     {
         // We embed a scanner so that $this->startTag() knows the current line number
         $this->scanner = new Scanner($inputstream);
@@ -65,7 +65,7 @@ class AMPDOMTreeBuilder extends DOMTreeBuilder
      * @param bool $selfClosing
      * @return bool|int
      */
-    public function startTag($name, $attributes = [], $selfClosing = false)
+    public function startTag($name, $attributes = array(], $selfClosing = false)
     {
         // Add this attribute to every tag so that we know the line number
         $attributes[AMP::AMP_LINENUM_ATTRIBUTE] = $this->scanner->currentLine();

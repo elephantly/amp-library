@@ -128,7 +128,7 @@ class IframeYouTubeTagTransformPass extends BasePass
      */
     protected function getYouTubeCode(DOMQuery $el)
     {
-        $matches = [];
+        $matches = array();
         $youtube_code = '';
         $href = $el->attr('src');
 

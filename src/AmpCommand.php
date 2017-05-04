@@ -79,7 +79,7 @@ class AmpCommand extends Command
     {
         $amp = new AMP();
         $options_filename = $input->getOption('options');
-        $options = [];
+        $options = array();
         if (!empty($options_filename)) {
             $options = $amp->getOptions($options_filename);
         }

@@ -30,12 +30,12 @@ use Lullabot\AMP\Utility\ActionTakenType;
  */
 class StandardFixPass extends BasePass
 {
-    protected $remove_properties_for_codes = [
+    protected $remove_properties_for_codes = array(
         ValidationErrorCode::DISALLOWED_PROPERTY_IN_ATTR_VALUE,
         ValidationErrorCode::INVALID_PROPERTY_VALUE_IN_ATTR_VALUE
-    ];
+    );
 
-    protected $remove_attributes_for_codes = [
+    protected $remove_attributes_for_codes = array(
         ValidationErrorCode::INVALID_URL_PROTOCOL,
         ValidationErrorCode::INVALID_URL,
         ValidationErrorCode::INVALID_ATTR_VALUE,
@@ -46,15 +46,15 @@ class StandardFixPass extends BasePass
         ValidationErrorCode::ATTR_DISALLOWED_BY_SPECIFIED_LAYOUT,
         ValidationErrorCode::ATTR_DISALLOWED_BY_IMPLIED_LAYOUT,
         ValidationErrorCode::SPECIFIED_LAYOUT_INVALID
-    ];
+    );
 
-    protected $remove_tags_for_codes = [
+    protected $remove_tags_for_codes = array(
         ValidationErrorCode::WRONG_PARENT_TAG,
         ValidationErrorCode::DISALLOWED_TAG,
         ValidationErrorCode::DISALLOWED_TAG_ANCESTOR,
         ValidationErrorCode::DUPLICATE_UNIQUE_TAG,
         ValidationErrorCode::GENERAL_DISALLOWED_TAG
-    ];
+    );
 
     public function pass()
     {
@@ -125,6 +125,6 @@ class StandardFixPass extends BasePass
 
         }
 
-        return [];
+        return array();
     }
 }

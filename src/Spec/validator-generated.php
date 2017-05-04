@@ -24,7 +24,7 @@
 namespace Lullabot\AMP\Spec;
 
 class AmpLayout {
-  public $supported_layouts = [];
+  public $supported_layouts = array();
   public $defines_default_width = null;
   public $defines_default_height = null;
 }
@@ -54,12 +54,12 @@ class AtRuleSpecBlockType {
 }
 class AttrList {
   public $name = null;
-  public $attrs = [];
+  public $attrs = array();
 }
 
 class AttrSpec {
   public $name = null;
-  public $alternative_names = [];
+  public $alternative_names = array();
   public $mandatory = null;
   public $mandatory_oneof = null;
   public $value = null;
@@ -77,7 +77,7 @@ class AttrSpec {
 
 class AttrTriggerSpec {
   public $if_value_regex = null;
-  public $also_requires_attr = [];
+  public $also_requires_attr = array();
 }
 
 class BlackListedCDataRegex {
@@ -91,21 +91,21 @@ class CdataSpec {
   public $mandatory_cdata = null;
   public $cdata_regex = null;
   public $css_spec = null;
-  public $blacklisted_cdata_regex = [];
+  public $blacklisted_cdata_regex = array();
 }
 
 class ChildTagSpec {
   public $mandatory_num_child_tags = null;
-  public $first_child_tag_name_oneof = [];
-  public $child_tag_name_oneof = [];
+  public $first_child_tag_name_oneof = array();
+  public $child_tag_name_oneof = array();
 }
 
 class CssRuleSpec {
 }
 
 class CssSpec {
-  public $at_rule_spec = [];
-  public $css_rule = [];
+  public $at_rule_spec = array();
+  public $css_rule = array();
   public $image_url_spec = null;
   public $font_url_spec = null;
 }
@@ -140,7 +140,7 @@ class PropertySpec {
 }
 
 class PropertySpecList {
-  public $properties = [];
+  public $properties = array();
 }
 
 class TagSpec {
@@ -152,12 +152,12 @@ class TagSpec {
   public $mandatory_parent = null;
   public $mandatory_ancestor = null;
   public $mandatory_ancestor_suggested_alternative = null;
-  public $disallowed_ancestor = [];
-  public $also_requires_tag = [];
+  public $disallowed_ancestor = array();
+  public $also_requires_tag = array();
   public $deprecation = null;
   public $deprecation_url = null;
-  public $attrs = [];
-  public $attr_lists = [];
+  public $attrs = array();
+  public $attr_lists = array();
   public $cdata = null;
   public $child_tags = null;
   public $spec_url = null;
@@ -165,7 +165,7 @@ class TagSpec {
 }
 
 class UrlSpec {
-  public $allowed_protocol = [];
+  public $allowed_protocol = array();
   public $allow_relative = null;
   public $allow_empty = null;
 }
@@ -177,7 +177,7 @@ class ValidationError {
   public $col = null;
   public $detail = null;
   public $spec_url = null;
-  public $params = [];
+  public $params = array();
   public $category = null;
   public $data_amp_report_test_value = null;
 }
@@ -256,7 +256,7 @@ class ValidationErrorSeverity {
 }
 class ValidationResult {
   public $status = null;
-  public $errors = [];
+  public $errors = array();
   public $validator_revision = null;
   public $spec_file_revision = null;
 }
@@ -274,12 +274,12 @@ class ValidatorInfo {
 }
 
 class ValidatorRules {
-  public $tags = [];
-  public $attr_lists = [];
+  public $tags = array();
+  public $attr_lists = array();
   public $min_validator_revision_required = null;
   public $spec_file_revision = null;
   public $template_spec_url = null;
-  public $error_formats = [];
+  public $error_formats = array();
 }
 
 class ValidationRulesFactory {
@@ -305,7 +305,7 @@ class ValidationRulesFactory {
   $o_3->mandatory_parent = '!doctype';
   $o_4 = new AttrSpec();
   $o_4->name = '\u26a1';
-  $o_4->alternative_names = ['amp'];
+  $o_4->alternative_names = array('amp');
   $o_4->mandatory = true;
   $o_4->value = '';
   $o_3->attrs[] = $o_4;
@@ -346,8 +346,8 @@ class ValidationRulesFactory {
   $o_13 = new AttrSpec();
   $o_13->name = 'type';
   $o_9->attrs[] = $o_13;
-  $o_9->attr_lists = ['common-link-attrs'];
-  $o_9->disallowed_ancestor = ['template'];
+  $o_9->attr_lists = array('common-link-attrs');
+  $o_9->disallowed_ancestor = array('template');
   $o_0->tags[] = $o_9;
   $o_14 = new TagSpec();
   $o_14->tag_name = 'link';
@@ -359,7 +359,7 @@ class ValidationRulesFactory {
   $o_15->name = 'href';
   $o_15->mandatory = true;
   $o_16 = new UrlSpec();
-  $o_16->allowed_protocol = ['http', 'https'];
+  $o_16->allowed_protocol = array('http', 'https');
   $o_16->allow_relative = true;
   $o_15->value_url = $o_16;
   $o_14->attrs[] = $o_15;
@@ -369,7 +369,7 @@ class ValidationRulesFactory {
   $o_17->value = 'canonical';
   $o_17->dispatch_key = true;
   $o_14->attrs[] = $o_17;
-  $o_14->attr_lists = ['common-link-attrs'];
+  $o_14->attr_lists = array('common-link-attrs');
   $o_14->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#required-markup';
   $o_0->tags[] = $o_14;
   $o_18 = new TagSpec();
@@ -408,7 +408,7 @@ class ValidationRulesFactory {
   $o_25->value = 'sameAs';
   $o_25->dispatch_key = true;
   $o_23->attrs[] = $o_25;
-  $o_23->attr_lists = ['common-link-attrs'];
+  $o_23->attr_lists = array('common-link-attrs');
   $o_0->tags[] = $o_23;
   $o_26 = new TagSpec();
   $o_26->tag_name = 'link';
@@ -421,7 +421,7 @@ class ValidationRulesFactory {
   $o_28->name = 'itemprop';
   $o_28->mandatory = true;
   $o_26->attrs[] = $o_28;
-  $o_26->attr_lists = ['common-link-attrs'];
+  $o_26->attr_lists = array('common-link-attrs');
   $o_0->tags[] = $o_26;
   $o_29 = new TagSpec();
   $o_29->tag_name = 'meta';
@@ -703,12 +703,12 @@ class ValidationRulesFactory {
   $o_92->type = AtRuleSpecBlockType::PARSE_AS_ERROR;
   $o_84->at_rule_spec[] = $o_92;
   $o_93 = new UrlSpec();
-  $o_93->allowed_protocol = ['https', 'http', 'data', 'absolute'];
+  $o_93->allowed_protocol = array('https', 'http', 'data', 'absolute');
   $o_93->allow_relative = true;
   $o_93->allow_empty = true;
   $o_84->image_url_spec = $o_93;
   $o_94 = new UrlSpec();
-  $o_94->allowed_protocol = ['https', 'http', 'data'];
+  $o_94->allowed_protocol = array('https', 'http', 'data');
   $o_94->allow_relative = true;
   $o_94->allow_empty = true;
   $o_84->font_url_spec = $o_94;
@@ -757,7 +757,7 @@ class ValidationRulesFactory {
   $o_101 = new CdataSpec();
   $o_101->cdata_regex = '\\s*body{-webkit-animation:-amp-start\\s+8s\\s+steps\\(1,end\\)\\s+0s\\s+1\\s+normal\\s+both;-moz-animation:-amp-start\\s+8s\\s+steps\\(1,end\\)\\s+0s\\s+1\\s+normal\\s+both;-ms-animation:-amp-start\\s+8s\\s+steps\\(1,end\\)\\s+0s\\s+1\\s+normal\\s+both;animation:-amp-start\\s+8s\\s+steps\\(1,end\\)\\s+0s\\s+1\\s+normal\\s+both}@-webkit-keyframes\\s+-amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes\\s+-amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes\\s+-amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes\\s+-amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes\\s+-amp-start{from{visibility:hidden}to{visibility:visible}}\\s*';
   $o_99->cdata = $o_101;
-  $o_99->also_requires_tag = ['noscript > style[amp-boilerplate]'];
+  $o_99->also_requires_tag = array('noscript > style[amp-boilerplate]');
   $o_0->tags[] = $o_99;
   $o_102 = new TagSpec();
   $o_102->tag_name = 'style';
@@ -775,7 +775,7 @@ class ValidationRulesFactory {
   $o_104 = new CdataSpec();
   $o_104->cdata_regex = '\\s*body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}\\s*';
   $o_102->cdata = $o_104;
-  $o_102->also_requires_tag = ['head > style[amp-boilerplate]'];
+  $o_102->also_requires_tag = array('head > style[amp-boilerplate]');
   $o_0->tags[] = $o_102;
   $o_105 = new TagSpec();
   $o_105->tag_name = 'body';
@@ -789,7 +789,7 @@ class ValidationRulesFactory {
   $o_0->tags[] = $o_106;
   $o_107 = new TagSpec();
   $o_107->tag_name = 'section';
-  $o_107->disallowed_ancestor = ['amp-accordion'];
+  $o_107->disallowed_ancestor = array('amp-accordion');
   $o_0->tags[] = $o_107;
   $o_108 = new TagSpec();
   $o_108->tag_name = 'nav';
@@ -859,7 +859,7 @@ class ValidationRulesFactory {
   $o_130 = new AttrSpec();
   $o_130->name = 'align';
   $o_129->attrs[] = $o_130;
-  $o_129->attr_lists = ['cite-attr'];
+  $o_129->attr_lists = array('cite-attr');
   $o_0->tags[] = $o_129;
   $o_131 = new TagSpec();
   $o_131->tag_name = 'ol';
@@ -915,7 +915,7 @@ class ValidationRulesFactory {
   $o_147 = new AttrSpec();
   $o_147->name = 'href';
   $o_148 = new UrlSpec();
-  $o_148->allowed_protocol = ['ftp', 'http', 'https', 'mailto', 'fb-messenger', 'sms', 'tel', 'viber', 'whatsapp'];
+  $o_148->allowed_protocol = array('ftp', 'http', 'https', 'mailto', 'fb-messenger', 'sms', 'tel', 'viber', 'whatsapp');
   $o_148->allow_relative = true;
   $o_147->value_url = $o_148;
   $o_146->attrs[] = $o_147;
@@ -972,7 +972,7 @@ class ValidationRulesFactory {
   $o_0->tags[] = $o_163;
   $o_164 = new TagSpec();
   $o_164->tag_name = 'q';
-  $o_164->attr_lists = ['cite-attr'];
+  $o_164->attr_lists = array('cite-attr');
   $o_0->tags[] = $o_164;
   $o_165 = new TagSpec();
   $o_165->tag_name = 'dfn';
@@ -1057,14 +1057,14 @@ class ValidationRulesFactory {
   $o_192 = new AttrSpec();
   $o_192->name = 'datetime';
   $o_191->attrs[] = $o_192;
-  $o_191->attr_lists = ['cite-attr'];
+  $o_191->attr_lists = array('cite-attr');
   $o_0->tags[] = $o_191;
   $o_193 = new TagSpec();
   $o_193->tag_name = 'del';
   $o_194 = new AttrSpec();
   $o_194->name = 'datetime';
   $o_193->attrs[] = $o_194;
-  $o_193->attr_lists = ['cite-attr'];
+  $o_193->attr_lists = array('cite-attr');
   $o_0->tags[] = $o_193;
   $o_195 = new TagSpec();
   $o_195->tag_name = 'img';
@@ -1077,16 +1077,16 @@ class ValidationRulesFactory {
   $o_198 = new AttrSpec();
   $o_198->name = 'longdesc';
   $o_199 = new UrlSpec();
-  $o_199->allowed_protocol = ['http', 'https'];
+  $o_199->allowed_protocol = array('http', 'https');
   $o_199->allow_relative = true;
   $o_198->value_url = $o_199;
   $o_195->attrs[] = $o_198;
   $o_200 = new AttrSpec();
   $o_200->name = 'src';
-  $o_200->alternative_names = ['srcset'];
+  $o_200->alternative_names = array('srcset');
   $o_200->mandatory = true;
   $o_201 = new UrlSpec();
-  $o_201->allowed_protocol = ['data', 'https'];
+  $o_201->allowed_protocol = array('data', 'https');
   $o_201->allow_relative = true;
   $o_200->value_url = $o_201;
   $o_195->attrs[] = $o_200;
@@ -1129,7 +1129,7 @@ class ValidationRulesFactory {
   $o_213 = new AttrSpec();
   $o_213->name = 'src';
   $o_214 = new UrlSpec();
-  $o_214->allowed_protocol = ['data', 'https'];
+  $o_214->allowed_protocol = array('data', 'https');
   $o_214->allow_relative = false;
   $o_213->value_url = $o_214;
   $o_205->attrs[] = $o_213;
@@ -1160,7 +1160,7 @@ class ValidationRulesFactory {
   $o_222 = new AttrSpec();
   $o_222->name = 'src';
   $o_223 = new UrlSpec();
-  $o_223->allowed_protocol = ['data', 'https'];
+  $o_223->allowed_protocol = array('data', 'https');
   $o_223->allow_relative = false;
   $o_222->value_url = $o_223;
   $o_216->attrs[] = $o_222;
@@ -1175,7 +1175,7 @@ class ValidationRulesFactory {
   $o_225 = new AttrSpec();
   $o_225->name = 'src';
   $o_226 = new UrlSpec();
-  $o_226->allowed_protocol = ['https'];
+  $o_226->allowed_protocol = array('https');
   $o_226->allow_relative = true;
   $o_225->value_url = $o_226;
   $o_224->attrs[] = $o_225;
@@ -1194,7 +1194,7 @@ class ValidationRulesFactory {
   $o_230 = new AttrSpec();
   $o_230->name = 'src';
   $o_231 = new UrlSpec();
-  $o_231->allowed_protocol = ['https'];
+  $o_231->allowed_protocol = array('https');
   $o_231->allow_relative = true;
   $o_230->value_url = $o_231;
   $o_229->attrs[] = $o_230;
@@ -1214,7 +1214,7 @@ class ValidationRulesFactory {
   $o_235->name = 'src';
   $o_235->mandatory = true;
   $o_236 = new UrlSpec();
-  $o_236->allowed_protocol = ['https'];
+  $o_236->allowed_protocol = array('https');
   $o_236->allow_relative = true;
   $o_235->value_url = $o_236;
   $o_234->attrs[] = $o_235;
@@ -1234,7 +1234,7 @@ class ValidationRulesFactory {
   $o_240->name = 'src';
   $o_240->mandatory = true;
   $o_241 = new UrlSpec();
-  $o_241->allowed_protocol = ['https'];
+  $o_241->allowed_protocol = array('https');
   $o_241->allow_relative = true;
   $o_240->value_url = $o_241;
   $o_239->attrs[] = $o_240;
@@ -1250,49 +1250,49 @@ class ValidationRulesFactory {
   $o_244->tag_name = 'track';
   $o_244->spec_name = 'audio > track';
   $o_244->mandatory_parent = 'audio';
-  $o_244->attr_lists = ['track-attrs-no-subtitles'];
+  $o_244->attr_lists = array('track-attrs-no-subtitles');
   $o_0->tags[] = $o_244;
   $o_245 = new TagSpec();
   $o_245->tag_name = 'track';
   $o_245->spec_name = 'audio > track[kind=subtitles]';
   $o_245->mandatory_parent = 'audio';
-  $o_245->attr_lists = ['track-attrs-subtitles'];
+  $o_245->attr_lists = array('track-attrs-subtitles');
   $o_0->tags[] = $o_245;
   $o_246 = new TagSpec();
   $o_246->tag_name = 'track';
   $o_246->spec_name = 'video > track';
   $o_246->mandatory_parent = 'video';
-  $o_246->attr_lists = ['track-attrs-no-subtitles'];
+  $o_246->attr_lists = array('track-attrs-no-subtitles');
   $o_0->tags[] = $o_246;
   $o_247 = new TagSpec();
   $o_247->tag_name = 'track';
   $o_247->spec_name = 'video > track[kind=subtitles]';
   $o_247->mandatory_parent = 'video';
-  $o_247->attr_lists = ['track-attrs-subtitles'];
+  $o_247->attr_lists = array('track-attrs-subtitles');
   $o_0->tags[] = $o_247;
   $o_248 = new TagSpec();
   $o_248->tag_name = 'track';
   $o_248->spec_name = 'amp-audio > track';
   $o_248->mandatory_parent = 'amp-audio';
-  $o_248->attr_lists = ['track-attrs-no-subtitles'];
+  $o_248->attr_lists = array('track-attrs-no-subtitles');
   $o_0->tags[] = $o_248;
   $o_249 = new TagSpec();
   $o_249->tag_name = 'track';
   $o_249->spec_name = 'amp-audio > track[kind=subtitles]';
   $o_249->mandatory_parent = 'amp-audio';
-  $o_249->attr_lists = ['track-attrs-subtitles'];
+  $o_249->attr_lists = array('track-attrs-subtitles');
   $o_0->tags[] = $o_249;
   $o_250 = new TagSpec();
   $o_250->tag_name = 'track';
   $o_250->spec_name = 'amp-video > track';
   $o_250->mandatory_parent = 'amp-video';
-  $o_250->attr_lists = ['track-attrs-no-subtitles'];
+  $o_250->attr_lists = array('track-attrs-no-subtitles');
   $o_0->tags[] = $o_250;
   $o_251 = new TagSpec();
   $o_251->tag_name = 'track';
   $o_251->spec_name = 'amp-video > track[kind=subtitles]';
   $o_251->mandatory_parent = 'amp-video';
-  $o_251->attr_lists = ['track-attrs-subtitles'];
+  $o_251->attr_lists = array('track-attrs-subtitles');
   $o_0->tags[] = $o_251;
   $o_252 = new TagSpec();
   $o_252->tag_name = 'g';
@@ -1305,7 +1305,7 @@ class ValidationRulesFactory {
   $o_255 = new AttrSpec();
   $o_255->name = 'transform';
   $o_252->attrs[] = $o_255;
-  $o_252->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_252->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_252->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_252->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_252;
@@ -1341,7 +1341,7 @@ class ValidationRulesFactory {
   $o_266 = new AttrSpec();
   $o_266->name = 'vert-adv-y';
   $o_256->attrs[] = $o_266;
-  $o_256->attr_lists = ['svg-core-attributes', 'svg-presentation-attributes'];
+  $o_256->attr_lists = array('svg-core-attributes', 'svg-presentation-attributes');
   $o_256->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_256->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_256;
@@ -1368,7 +1368,7 @@ class ValidationRulesFactory {
   $o_274 = new AttrSpec();
   $o_274->name = 'y';
   $o_267->attrs[] = $o_274;
-  $o_267->attr_lists = ['svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes'];
+  $o_267->attr_lists = array('svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes');
   $o_267->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_267->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_267;
@@ -1407,7 +1407,7 @@ class ValidationRulesFactory {
   $o_286 = new AttrSpec();
   $o_286->name = 'viewbox';
   $o_275->attrs[] = $o_286;
-  $o_275->attr_lists = ['svg-core-attributes', 'svg-presentation-attributes'];
+  $o_275->attr_lists = array('svg-core-attributes', 'svg-presentation-attributes');
   $o_275->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_275->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_275;
@@ -1431,7 +1431,7 @@ class ValidationRulesFactory {
   $o_293 = new AttrSpec();
   $o_293->name = 'transform';
   $o_287->attrs[] = $o_293;
-  $o_287->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_287->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_287->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_287->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_287;
@@ -1474,9 +1474,9 @@ class ValidationRulesFactory {
   $o_306 = new AttrSpec();
   $o_306->name = 'zoomandpan';
   $o_294->attrs[] = $o_306;
-  $o_294->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_294->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_294->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
-  $o_294->disallowed_ancestor = ['svg'];
+  $o_294->disallowed_ancestor = array('svg');
   $o_0->tags[] = $o_294;
   $o_307 = new TagSpec();
   $o_307->tag_name = 'view';
@@ -1495,7 +1495,7 @@ class ValidationRulesFactory {
   $o_312 = new AttrSpec();
   $o_312->name = 'zoomandpan';
   $o_307->attrs[] = $o_312;
-  $o_307->attr_lists = ['svg-core-attributes'];
+  $o_307->attr_lists = array('svg-core-attributes');
   $o_307->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_307->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_307;
@@ -1522,7 +1522,7 @@ class ValidationRulesFactory {
   $o_320 = new AttrSpec();
   $o_320->name = 'transform';
   $o_313->attrs[] = $o_320;
-  $o_313->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_313->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_313->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_313->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_313;
@@ -1552,7 +1552,7 @@ class ValidationRulesFactory {
   $o_329 = new AttrSpec();
   $o_329->name = 'y2';
   $o_321->attrs[] = $o_329;
-  $o_321->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_321->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_321->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_321->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_321;
@@ -1573,7 +1573,7 @@ class ValidationRulesFactory {
   $o_335 = new AttrSpec();
   $o_335->name = 'transform';
   $o_330->attrs[] = $o_335;
-  $o_330->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_330->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_330->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_330->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_330;
@@ -1594,7 +1594,7 @@ class ValidationRulesFactory {
   $o_341 = new AttrSpec();
   $o_341->name = 'transform';
   $o_336->attrs[] = $o_341;
-  $o_336->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_336->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_336->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_336->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_336;
@@ -1630,7 +1630,7 @@ class ValidationRulesFactory {
   $o_352 = new AttrSpec();
   $o_352->name = 'y';
   $o_342->attrs[] = $o_352;
-  $o_342->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_342->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_342->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_342->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_342;
@@ -1669,7 +1669,7 @@ class ValidationRulesFactory {
   $o_364 = new AttrSpec();
   $o_364->name = 'y';
   $o_353->attrs[] = $o_364;
-  $o_353->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_353->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_353->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_353->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_353;
@@ -1690,7 +1690,7 @@ class ValidationRulesFactory {
   $o_370 = new AttrSpec();
   $o_370->name = 'startoffset';
   $o_365->attrs[] = $o_370;
-  $o_365->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes'];
+  $o_365->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes');
   $o_365->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_365->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_365;
@@ -1702,7 +1702,7 @@ class ValidationRulesFactory {
   $o_373 = new AttrSpec();
   $o_373->name = 'externalresourcesrequired';
   $o_371->attrs[] = $o_373;
-  $o_371->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes'];
+  $o_371->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes');
   $o_371->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_371->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_371;
@@ -1735,7 +1735,7 @@ class ValidationRulesFactory {
   $o_383 = new AttrSpec();
   $o_383->name = 'y';
   $o_374->attrs[] = $o_383;
-  $o_374->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_374->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_374->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_374->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_374;
@@ -1753,7 +1753,7 @@ class ValidationRulesFactory {
   $o_388 = new AttrSpec();
   $o_388->name = 'transform';
   $o_384->attrs[] = $o_388;
-  $o_384->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_384->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_384->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_384->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_384;
@@ -1786,7 +1786,7 @@ class ValidationRulesFactory {
   $o_398 = new AttrSpec();
   $o_398->name = 'y';
   $o_389->attrs[] = $o_398;
-  $o_389->attr_lists = ['svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes'];
+  $o_389->attr_lists = array('svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes');
   $o_389->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_389->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_389;
@@ -1807,7 +1807,7 @@ class ValidationRulesFactory {
   $o_404 = new AttrSpec();
   $o_404->name = 'u2';
   $o_399->attrs[] = $o_404;
-  $o_399->attr_lists = ['svg-core-attributes'];
+  $o_399->attr_lists = array('svg-core-attributes');
   $o_399->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_399->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_399;
@@ -1840,7 +1840,7 @@ class ValidationRulesFactory {
   $o_414 = new AttrSpec();
   $o_414->name = 'y2';
   $o_405->attrs[] = $o_414;
-  $o_405->attr_lists = ['svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes'];
+  $o_405->attr_lists = array('svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes');
   $o_405->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_405->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_405;
@@ -1870,7 +1870,7 @@ class ValidationRulesFactory {
   $o_423 = new AttrSpec();
   $o_423->name = 'y';
   $o_415->attrs[] = $o_423;
-  $o_415->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_415->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_415->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_415->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_415;
@@ -1909,7 +1909,7 @@ class ValidationRulesFactory {
   $o_435 = new AttrSpec();
   $o_435->name = 'y';
   $o_424->attrs[] = $o_435;
-  $o_424->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes'];
+  $o_424->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes');
   $o_424->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_424->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_424;
@@ -1945,7 +1945,7 @@ class ValidationRulesFactory {
   $o_446 = new AttrSpec();
   $o_446->name = 'spreadmethod';
   $o_436->attrs[] = $o_446;
-  $o_436->attr_lists = ['svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes'];
+  $o_436->attr_lists = array('svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes');
   $o_436->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_436->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_436;
@@ -1996,7 +1996,7 @@ class ValidationRulesFactory {
   $o_460 = new AttrSpec();
   $o_460->name = 'u2';
   $o_455->attrs[] = $o_460;
-  $o_455->attr_lists = ['svg-core-attributes'];
+  $o_455->attr_lists = array('svg-core-attributes');
   $o_455->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_455->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_455;
@@ -2011,7 +2011,7 @@ class ValidationRulesFactory {
   $o_464 = new AttrSpec();
   $o_464->name = 'transform';
   $o_461->attrs[] = $o_464;
-  $o_461->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_461->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_461->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_461->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_461;
@@ -2029,7 +2029,7 @@ class ValidationRulesFactory {
   $o_469 = new AttrSpec();
   $o_469->name = 'viewbox';
   $o_465->attrs[] = $o_469;
-  $o_465->attr_lists = ['svg-core-attributes', 'svg-presentation-attributes'];
+  $o_465->attr_lists = array('svg-core-attributes', 'svg-presentation-attributes');
   $o_465->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_465->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_465;
@@ -2056,7 +2056,7 @@ class ValidationRulesFactory {
   $o_477 = new AttrSpec();
   $o_477->name = 'y';
   $o_470->attrs[] = $o_477;
-  $o_470->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes'];
+  $o_470->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes', 'svg-xlink-attributes');
   $o_470->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_470->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_470;
@@ -2083,7 +2083,7 @@ class ValidationRulesFactory {
   $o_485 = new AttrSpec();
   $o_485->name = 'y';
   $o_478->attrs[] = $o_485;
-  $o_478->attr_lists = ['svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes'];
+  $o_478->attr_lists = array('svg-conditional-processing-attributes', 'svg-core-attributes', 'svg-presentation-attributes');
   $o_478->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_478->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_478;
@@ -2092,7 +2092,7 @@ class ValidationRulesFactory {
   $o_487 = new AttrSpec();
   $o_487->name = 'class';
   $o_486->attrs[] = $o_487;
-  $o_486->attr_lists = ['svg-core-attributes'];
+  $o_486->attr_lists = array('svg-core-attributes');
   $o_486->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_486->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_486;
@@ -2102,7 +2102,7 @@ class ValidationRulesFactory {
   $o_489 = new AttrSpec();
   $o_489->name = 'class';
   $o_488->attrs[] = $o_489;
-  $o_488->attr_lists = ['svg-core-attributes'];
+  $o_488->attr_lists = array('svg-core-attributes');
   $o_488->spec_url = 'https://www.ampproject.org/docs/reference/spec.html#svg';
   $o_488->mandatory_ancestor = 'svg';
   $o_0->tags[] = $o_488;
@@ -2312,7 +2312,7 @@ class ValidationRulesFactory {
   $o_0->tags[] = $o_549;
   $o_550 = new TagSpec();
   $o_550->tag_name = 'noscript';
-  $o_550->disallowed_ancestor = ['noscript'];
+  $o_550->disallowed_ancestor = array('noscript');
   $o_550->mandatory_ancestor = 'body';
   $o_0->tags[] = $o_550;
   $o_551 = new TagSpec();
@@ -2400,7 +2400,7 @@ class ValidationRulesFactory {
   $o_575 = new AttrSpec();
   $o_575->name = 'src';
   $o_576 = new UrlSpec();
-  $o_576->allowed_protocol = ['https'];
+  $o_576->allowed_protocol = array('https');
   $o_576->allow_relative = true;
   $o_575->value_url = $o_576;
   $o_572->attrs[] = $o_575;
@@ -2408,12 +2408,12 @@ class ValidationRulesFactory {
   $o_577->name = 'type';
   $o_577->mandatory = true;
   $o_572->attrs[] = $o_577;
-  $o_572->attr_lists = ['extended-amp-global'];
+  $o_572->attr_lists = array('extended-amp-global');
   $o_572->spec_url = 'https://www.ampproject.org/docs/reference/amp-ad.html';
   $o_578 = new AmpLayout();
-  $o_578->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_578->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_572->amp_layout = $o_578;
-  $o_572->disallowed_ancestor = ['amp-sidebar'];
+  $o_572->disallowed_ancestor = array('amp-sidebar');
   $o_0->tags[] = $o_572;
   $o_579 = new TagSpec();
   $o_579->tag_name = 'amp-embed';
@@ -2426,7 +2426,7 @@ class ValidationRulesFactory {
   $o_582 = new AttrSpec();
   $o_582->name = 'src';
   $o_583 = new UrlSpec();
-  $o_583->allowed_protocol = ['https'];
+  $o_583->allowed_protocol = array('https');
   $o_583->allow_relative = true;
   $o_582->value_url = $o_583;
   $o_579->attrs[] = $o_582;
@@ -2434,12 +2434,12 @@ class ValidationRulesFactory {
   $o_584->name = 'type';
   $o_584->mandatory = true;
   $o_579->attrs[] = $o_584;
-  $o_579->attr_lists = ['extended-amp-global'];
+  $o_579->attr_lists = array('extended-amp-global');
   $o_579->spec_url = 'https://www.ampproject.org/docs/reference/amp-embed.html';
   $o_585 = new AmpLayout();
-  $o_585->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_585->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_579->amp_layout = $o_585;
-  $o_579->disallowed_ancestor = ['amp-sidebar'];
+  $o_579->disallowed_ancestor = array('amp-sidebar');
   $o_0->tags[] = $o_579;
   $o_586 = new TagSpec();
   $o_586->tag_name = 'amp-img';
@@ -2452,10 +2452,10 @@ class ValidationRulesFactory {
   $o_589 = new AttrSpec();
   $o_589->name = 'placeholder';
   $o_586->attrs[] = $o_589;
-  $o_586->attr_lists = ['extended-amp-global', 'mandatory-src-or-srcset'];
+  $o_586->attr_lists = array('extended-amp-global', 'mandatory-src-or-srcset');
   $o_586->spec_url = 'https://www.ampproject.org/docs/reference/amp-img.html';
   $o_590 = new AmpLayout();
-  $o_590->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_590->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_586->amp_layout = $o_590;
   $o_0->tags[] = $o_586;
   $o_591 = new TagSpec();
@@ -2464,18 +2464,18 @@ class ValidationRulesFactory {
   $o_592->name = 'src';
   $o_592->mandatory = true;
   $o_593 = new UrlSpec();
-  $o_593->allowed_protocol = ['https'];
+  $o_593->allowed_protocol = array('https');
   $o_593->allow_relative = true;
   $o_592->value_url = $o_593;
   $o_591->attrs[] = $o_592;
-  $o_591->attr_lists = ['extended-amp-global'];
+  $o_591->attr_lists = array('extended-amp-global');
   $o_591->spec_url = 'https://www.ampproject.org/docs/reference/amp-pixel.html';
   $o_594 = new AmpLayout();
-  $o_594->supported_layouts = [AmpLayoutLayout::FIXED, AmpLayoutLayout::NODISPLAY];
+  $o_594->supported_layouts = array(AmpLayoutLayout::FIXED, AmpLayoutLayout::NODISPLAY);
   $o_594->defines_default_width = true;
   $o_594->defines_default_height = true;
   $o_591->amp_layout = $o_594;
-  $o_591->disallowed_ancestor = ['amp-sidebar'];
+  $o_591->disallowed_ancestor = array('amp-sidebar');
   $o_0->tags[] = $o_591;
   $o_595 = new TagSpec();
   $o_595->tag_name = 'amp-video';
@@ -2514,16 +2514,16 @@ class ValidationRulesFactory {
   $o_605 = new AttrSpec();
   $o_605->name = 'src';
   $o_606 = new UrlSpec();
-  $o_606->allowed_protocol = ['https'];
+  $o_606->allowed_protocol = array('https');
   $o_606->allow_relative = true;
   $o_605->value_url = $o_606;
   $o_595->attrs[] = $o_605;
-  $o_595->attr_lists = ['extended-amp-global'];
+  $o_595->attr_lists = array('extended-amp-global');
   $o_595->spec_url = 'https://www.ampproject.org/docs/reference/amp-video.html';
   $o_607 = new AmpLayout();
-  $o_607->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_607->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_595->amp_layout = $o_607;
-  $o_595->disallowed_ancestor = ['amp-sidebar'];
+  $o_595->disallowed_ancestor = array('amp-sidebar');
   $o_0->tags[] = $o_595;
   $o_608 = new TagSpec();
   $o_608->tag_name = 'script';
@@ -2579,7 +2579,7 @@ class ValidationRulesFactory {
   $o_619->error_message = 'html comments';
   $o_618->blacklisted_cdata_regex[] = $o_619;
   $o_615->cdata = $o_618;
-  $o_615->also_requires_tag = ['amp-access extension .js script', 'amp-analytics extension .js script'];
+  $o_615->also_requires_tag = array('amp-access extension .js script', 'amp-analytics extension .js script');
   $o_0->tags[] = $o_615;
   $o_620 = new TagSpec();
   $o_620->tag_name = 'script';
@@ -2621,12 +2621,12 @@ class ValidationRulesFactory {
   $o_627->attrs[] = $o_628;
   $o_627->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-accordion.html';
   $o_629 = new AmpLayout();
-  $o_629->supported_layouts = [AmpLayoutLayout::CONTAINER];
+  $o_629->supported_layouts = array(AmpLayoutLayout::CONTAINER);
   $o_627->amp_layout = $o_629;
-  $o_627->disallowed_ancestor = ['head'];
-  $o_627->also_requires_tag = ['amp-accordion extension .js script'];
+  $o_627->disallowed_ancestor = array('head');
+  $o_627->also_requires_tag = array('amp-accordion extension .js script');
   $o_630 = new ChildTagSpec();
-  $o_630->child_tag_name_oneof = ['section'];
+  $o_630->child_tag_name_oneof = array('section');
   $o_627->child_tags = $o_630;
   $o_0->tags[] = $o_627;
   $o_631 = new TagSpec();
@@ -2637,10 +2637,10 @@ class ValidationRulesFactory {
   $o_632->name = 'expanded';
   $o_632->value = '';
   $o_631->attrs[] = $o_632;
-  $o_631->disallowed_ancestor = ['head'];
+  $o_631->disallowed_ancestor = array('head');
   $o_633 = new ChildTagSpec();
   $o_633->mandatory_num_child_tags = 2;
-  $o_633->first_child_tag_name_oneof = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'header'];
+  $o_633->first_child_tag_name_oneof = array('h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'header');
   $o_631->child_tags = $o_633;
   $o_0->tags[] = $o_631;
   $o_634 = new TagSpec();
@@ -2724,13 +2724,13 @@ class ValidationRulesFactory {
   $o_652 = new AttrSpec();
   $o_652->name = 'config';
   $o_653 = new UrlSpec();
-  $o_653->allowed_protocol = ['https'];
+  $o_653->allowed_protocol = array('https');
   $o_653->allow_relative = true;
   $o_652->value_url = $o_653;
   $o_650->attrs[] = $o_652;
   $o_650->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-analytics.html';
-  $o_650->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_650->also_requires_tag = ['amp-analytics extension .js script'];
+  $o_650->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_650->also_requires_tag = array('amp-analytics extension .js script');
   $o_0->tags[] = $o_650;
   $o_654 = new TagSpec();
   $o_654->tag_name = 'script';
@@ -2779,13 +2779,13 @@ class ValidationRulesFactory {
   $o_665 = new AttrSpec();
   $o_665->name = 'controls';
   $o_661->attrs[] = $o_665;
-  $o_661->attr_lists = ['extended-amp-global', 'mandatory-src-or-srcset'];
+  $o_661->attr_lists = array('extended-amp-global', 'mandatory-src-or-srcset');
   $o_661->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-anim.html';
   $o_666 = new AmpLayout();
-  $o_666->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_666->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_661->amp_layout = $o_666;
-  $o_661->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_661->also_requires_tag = ['amp-anim extension .js script'];
+  $o_661->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_661->also_requires_tag = array('amp-anim extension .js script');
   $o_0->tags[] = $o_661;
   $o_667 = new TagSpec();
   $o_667->tag_name = 'script';
@@ -2839,19 +2839,19 @@ class ValidationRulesFactory {
   $o_679 = new AttrSpec();
   $o_679->name = 'src';
   $o_680 = new UrlSpec();
-  $o_680->allowed_protocol = ['https'];
+  $o_680->allowed_protocol = array('https');
   $o_680->allow_relative = true;
   $o_679->value_url = $o_680;
   $o_674->attrs[] = $o_679;
-  $o_674->attr_lists = ['extended-amp-global'];
+  $o_674->attr_lists = array('extended-amp-global');
   $o_674->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-audio.html';
   $o_681 = new AmpLayout();
-  $o_681->supported_layouts = [AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::NODISPLAY];
+  $o_681->supported_layouts = array(AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::NODISPLAY);
   $o_681->defines_default_width = true;
   $o_681->defines_default_height = true;
   $o_674->amp_layout = $o_681;
-  $o_674->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_674->also_requires_tag = ['amp-audio extension .js script'];
+  $o_674->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_674->also_requires_tag = array('amp-audio extension .js script');
   $o_0->tags[] = $o_674;
   $o_682 = new TagSpec();
   $o_682->tag_name = 'script';
@@ -2907,13 +2907,13 @@ class ValidationRulesFactory {
   $o_693->mandatory_oneof = '[\'data-playlist\', \'data-video\']';
   $o_693->value_regex = '[0-9]+';
   $o_689->attrs[] = $o_693;
-  $o_689->attr_lists = ['extended-amp-global'];
+  $o_689->attr_lists = array('extended-amp-global');
   $o_689->spec_url = 'https://github.com/ampproject/amphtml/blob/master/extensions/amp-brid-player/amp-brid-player.md';
   $o_694 = new AmpLayout();
-  $o_694->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_694->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_689->amp_layout = $o_694;
-  $o_689->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_689->also_requires_tag = ['amp-brid-player extension .js script'];
+  $o_689->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_689->also_requires_tag = array('amp-brid-player extension .js script');
   $o_0->tags[] = $o_689;
   $o_695 = new TagSpec();
   $o_695->tag_name = 'script';
@@ -2965,13 +2965,13 @@ class ValidationRulesFactory {
   $o_707 = new AttrSpec();
   $o_707->name = 'data-video-id';
   $o_702->attrs[] = $o_707;
-  $o_702->attr_lists = ['extended-amp-global'];
+  $o_702->attr_lists = array('extended-amp-global');
   $o_702->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-brightcove.html';
   $o_708 = new AmpLayout();
-  $o_708->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_708->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_702->amp_layout = $o_708;
-  $o_702->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_702->also_requires_tag = ['amp-brightcove extension .js script'];
+  $o_702->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_702->also_requires_tag = array('amp-brightcove extension .js script');
   $o_0->tags[] = $o_702;
   $o_709 = new TagSpec();
   $o_709->tag_name = 'script';
@@ -3034,13 +3034,13 @@ class ValidationRulesFactory {
   $o_723->name = 'type';
   $o_723->value_regex = 'slides|carousel';
   $o_716->attrs[] = $o_723;
-  $o_716->attr_lists = ['extended-amp-global'];
+  $o_716->attr_lists = array('extended-amp-global');
   $o_716->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-carousel.html';
   $o_724 = new AmpLayout();
-  $o_724->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_724->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_716->amp_layout = $o_724;
-  $o_716->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_716->also_requires_tag = ['amp-carousel extension .js script'];
+  $o_716->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_716->also_requires_tag = array('amp-carousel extension .js script');
   $o_0->tags[] = $o_716;
   $o_725 = new TagSpec();
   $o_725->tag_name = 'script';
@@ -3109,13 +3109,13 @@ class ValidationRulesFactory {
   $o_740->mandatory = true;
   $o_740->value_regex_casei = '[a-z0-9]+';
   $o_732->attrs[] = $o_740;
-  $o_732->attr_lists = ['extended-amp-global'];
+  $o_732->attr_lists = array('extended-amp-global');
   $o_732->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-dailymotion.html';
   $o_741 = new AmpLayout();
-  $o_741->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::RESPONSIVE];
+  $o_741->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::RESPONSIVE);
   $o_732->amp_layout = $o_741;
-  $o_732->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_732->also_requires_tag = ['amp-dailymotion extension .js script'];
+  $o_732->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_732->also_requires_tag = array('amp-dailymotion extension .js script');
   $o_0->tags[] = $o_732;
   $o_742 = new TagSpec();
   $o_742->tag_name = 'script';
@@ -3187,13 +3187,13 @@ class ValidationRulesFactory {
   $o_757->name = 'data-href';
   $o_757->mandatory = true;
   $o_756->attrs[] = $o_757;
-  $o_756->attr_lists = ['extended-amp-global'];
+  $o_756->attr_lists = array('extended-amp-global');
   $o_756->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-facebook.html';
   $o_758 = new AmpLayout();
-  $o_758->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_758->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_756->amp_layout = $o_758;
-  $o_756->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_756->also_requires_tag = ['amp-facebook extension .js script'];
+  $o_756->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_756->also_requires_tag = array('amp-facebook extension .js script');
   $o_0->tags[] = $o_756;
   $o_759 = new TagSpec();
   $o_759->tag_name = 'script';
@@ -3235,13 +3235,13 @@ class ValidationRulesFactory {
   $o_768 = new AttrSpec();
   $o_768->name = 'min-font-size';
   $o_766->attrs[] = $o_768;
-  $o_766->attr_lists = ['extended-amp-global'];
+  $o_766->attr_lists = array('extended-amp-global');
   $o_766->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-fit-text.html';
   $o_769 = new AmpLayout();
-  $o_769->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_769->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_766->amp_layout = $o_769;
-  $o_766->disallowed_ancestor = ['head'];
-  $o_766->also_requires_tag = ['amp-fit-text extension .js script'];
+  $o_766->disallowed_ancestor = array('head');
+  $o_766->also_requires_tag = array('amp-fit-text extension .js script');
   $o_0->tags[] = $o_766;
   $o_770 = new TagSpec();
   $o_770->tag_name = 'script';
@@ -3306,13 +3306,13 @@ class ValidationRulesFactory {
   $o_786 = new AttrSpec();
   $o_786->name = 'on-load-remove-class';
   $o_777->attrs[] = $o_786;
-  $o_777->attr_lists = ['extended-amp-global'];
+  $o_777->attr_lists = array('extended-amp-global');
   $o_777->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-font.html';
   $o_787 = new AmpLayout();
-  $o_787->supported_layouts = [AmpLayoutLayout::NODISPLAY];
+  $o_787->supported_layouts = array(AmpLayoutLayout::NODISPLAY);
   $o_777->amp_layout = $o_787;
-  $o_777->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_777->also_requires_tag = ['amp-font extension .js script'];
+  $o_777->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_777->also_requires_tag = array('amp-font extension .js script');
   $o_0->tags[] = $o_777;
   $o_788 = new TagSpec();
   $o_788->tag_name = 'script';
@@ -3375,7 +3375,7 @@ class ValidationRulesFactory {
   $o_802->name = 'src';
   $o_802->mandatory_oneof = '[\'src\', \'srcdoc\']';
   $o_803 = new UrlSpec();
-  $o_803->allowed_protocol = ['data', 'https'];
+  $o_803->allowed_protocol = array('data', 'https');
   $o_803->allow_relative = true;
   $o_802->value_url = $o_803;
   $o_795->attrs[] = $o_802;
@@ -3383,13 +3383,13 @@ class ValidationRulesFactory {
   $o_804->name = 'srcdoc';
   $o_804->mandatory_oneof = '[\'src\', \'srcdoc\']';
   $o_795->attrs[] = $o_804;
-  $o_795->attr_lists = ['extended-amp-global'];
+  $o_795->attr_lists = array('extended-amp-global');
   $o_795->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-iframe.html';
   $o_805 = new AmpLayout();
-  $o_805->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_805->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_795->amp_layout = $o_805;
-  $o_795->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_795->also_requires_tag = ['amp-iframe extension .js script'];
+  $o_795->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_795->also_requires_tag = array('amp-iframe extension .js script');
   $o_0->tags[] = $o_795;
   $o_806 = new TagSpec();
   $o_806->tag_name = 'script';
@@ -3428,13 +3428,13 @@ class ValidationRulesFactory {
   $o_814 = new AttrSpec();
   $o_814->name = 'controls';
   $o_813->attrs[] = $o_814;
-  $o_813->attr_lists = ['extended-amp-global'];
+  $o_813->attr_lists = array('extended-amp-global');
   $o_813->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-image-lightbox.html';
   $o_815 = new AmpLayout();
-  $o_815->supported_layouts = [AmpLayoutLayout::NODISPLAY];
+  $o_815->supported_layouts = array(AmpLayoutLayout::NODISPLAY);
   $o_813->amp_layout = $o_815;
-  $o_813->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_813->also_requires_tag = ['amp-image-lightbox extension .js script'];
+  $o_813->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_813->also_requires_tag = array('amp-image-lightbox extension .js script');
   $o_0->tags[] = $o_813;
   $o_816 = new TagSpec();
   $o_816->tag_name = 'script';
@@ -3487,17 +3487,17 @@ class ValidationRulesFactory {
   $o_827->name = 'src';
   $o_827->mandatory_oneof = '[\'data-shortcode\', \'src\']';
   $o_828 = new UrlSpec();
-  $o_828->allowed_protocol = ['http', 'https'];
+  $o_828->allowed_protocol = array('http', 'https');
   $o_828->allow_relative = true;
   $o_827->value_url = $o_828;
   $o_823->attrs[] = $o_827;
-  $o_823->attr_lists = ['extended-amp-global'];
+  $o_823->attr_lists = array('extended-amp-global');
   $o_823->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-instagram.html';
   $o_829 = new AmpLayout();
-  $o_829->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_829->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_823->amp_layout = $o_829;
-  $o_823->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_823->also_requires_tag = ['amp-instagram extension .js script'];
+  $o_823->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_823->also_requires_tag = array('amp-instagram extension .js script');
   $o_0->tags[] = $o_823;
   $o_830 = new TagSpec();
   $o_830->tag_name = 'script';
@@ -3537,16 +3537,16 @@ class ValidationRulesFactory {
   $o_838->name = 'src';
   $o_838->mandatory = true;
   $o_839 = new UrlSpec();
-  $o_839->allowed_protocol = ['https'];
+  $o_839->allowed_protocol = array('https');
   $o_839->allow_relative = true;
   $o_838->value_url = $o_839;
   $o_837->attrs[] = $o_838;
   $o_837->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-install-serviceworker.html';
   $o_840 = new AmpLayout();
-  $o_840->supported_layouts = [AmpLayoutLayout::NODISPLAY];
+  $o_840->supported_layouts = array(AmpLayoutLayout::NODISPLAY);
   $o_837->amp_layout = $o_840;
-  $o_837->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_837->also_requires_tag = ['amp-install-serviceworker extension .js script'];
+  $o_837->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_837->also_requires_tag = array('amp-install-serviceworker extension .js script');
   $o_0->tags[] = $o_837;
   $o_841 = new TagSpec();
   $o_841->tag_name = 'script';
@@ -3599,10 +3599,10 @@ class ValidationRulesFactory {
   $o_848->attrs[] = $o_851;
   $o_848->spec_url = 'https://github.com/ampproject/amphtml/blob/master/extensions/amp-jwplayer/amp-jwplayer.md';
   $o_852 = new AmpLayout();
-  $o_852->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_852->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_848->amp_layout = $o_852;
-  $o_848->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_848->also_requires_tag = ['amp-jwplayer extension .js script'];
+  $o_848->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_848->also_requires_tag = array('amp-jwplayer extension .js script');
   $o_0->tags[] = $o_848;
   $o_853 = new TagSpec();
   $o_853->tag_name = 'script';
@@ -3642,13 +3642,13 @@ class ValidationRulesFactory {
   $o_861->name = 'data-partner';
   $o_861->mandatory = true;
   $o_860->attrs[] = $o_861;
-  $o_860->attr_lists = ['extended-amp-global'];
+  $o_860->attr_lists = array('extended-amp-global');
   $o_860->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-kaltura-player.html';
   $o_862 = new AmpLayout();
-  $o_862->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_862->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_860->amp_layout = $o_862;
-  $o_860->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_860->also_requires_tag = ['amp-kaltura-player extension .js script'];
+  $o_860->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_860->also_requires_tag = array('amp-kaltura-player extension .js script');
   $o_0->tags[] = $o_860;
   $o_863 = new TagSpec();
   $o_863->tag_name = 'script';
@@ -3690,13 +3690,13 @@ class ValidationRulesFactory {
   $o_872 = new AttrSpec();
   $o_872->name = 'from';
   $o_870->attrs[] = $o_872;
-  $o_870->attr_lists = ['extended-amp-global'];
+  $o_870->attr_lists = array('extended-amp-global');
   $o_870->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-lightbox.html';
   $o_873 = new AmpLayout();
-  $o_873->supported_layouts = [AmpLayoutLayout::NODISPLAY];
+  $o_873->supported_layouts = array(AmpLayoutLayout::NODISPLAY);
   $o_870->amp_layout = $o_873;
-  $o_870->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_870->also_requires_tag = ['amp-lightbox extension .js script'];
+  $o_870->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_870->also_requires_tag = array('amp-lightbox extension .js script');
   $o_0->tags[] = $o_870;
   $o_874 = new TagSpec();
   $o_874->tag_name = 'script';
@@ -3739,20 +3739,20 @@ class ValidationRulesFactory {
   $o_883->name = 'src';
   $o_883->mandatory = true;
   $o_884 = new UrlSpec();
-  $o_884->allowed_protocol = ['https'];
+  $o_884->allowed_protocol = array('https');
   $o_884->allow_relative = true;
   $o_883->value_url = $o_884;
   $o_881->attrs[] = $o_883;
   $o_885 = new AttrSpec();
   $o_885->name = 'template';
   $o_881->attrs[] = $o_885;
-  $o_881->attr_lists = ['extended-amp-global'];
+  $o_881->attr_lists = array('extended-amp-global');
   $o_881->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-list.html';
   $o_886 = new AmpLayout();
-  $o_886->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_886->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_881->amp_layout = $o_886;
-  $o_881->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_881->also_requires_tag = ['amp-list extension .js script'];
+  $o_881->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_881->also_requires_tag = array('amp-list extension .js script');
   $o_0->tags[] = $o_881;
   $o_887 = new TagSpec();
   $o_887->tag_name = 'script';
@@ -3794,8 +3794,8 @@ class ValidationRulesFactory {
   $o_895->value = 'amp-mustache';
   $o_894->attrs[] = $o_895;
   $o_894->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-mustache.html';
-  $o_894->disallowed_ancestor = ['template'];
-  $o_894->also_requires_tag = ['amp-mustache extension .js script'];
+  $o_894->disallowed_ancestor = array('template');
+  $o_894->also_requires_tag = array('amp-mustache extension .js script');
   $o_0->tags[] = $o_894;
   $o_896 = new TagSpec();
   $o_896->tag_name = 'script';
@@ -3835,13 +3835,13 @@ class ValidationRulesFactory {
   $o_904->name = 'data-do';
   $o_904->mandatory = true;
   $o_903->attrs[] = $o_904;
-  $o_903->attr_lists = ['extended-amp-global'];
+  $o_903->attr_lists = array('extended-amp-global');
   $o_903->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-pinterest.html';
   $o_905 = new AmpLayout();
-  $o_905->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_905->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_903->amp_layout = $o_905;
-  $o_903->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_903->also_requires_tag = ['amp-pinterest extension .js script'];
+  $o_903->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_903->also_requires_tag = array('amp-pinterest extension .js script');
   $o_0->tags[] = $o_903;
   $o_906 = new TagSpec();
   $o_906->tag_name = 'script';
@@ -3881,12 +3881,12 @@ class ValidationRulesFactory {
   $o_914->mandatory = true;
   $o_914->value_regex = '[0-9a-z-]+';
   $o_913->attrs[] = $o_914;
-  $o_913->attr_lists = ['extended-amp-global'];
+  $o_913->attr_lists = array('extended-amp-global');
   $o_915 = new AmpLayout();
-  $o_915->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::RESPONSIVE];
+  $o_915->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::RESPONSIVE);
   $o_913->amp_layout = $o_915;
-  $o_913->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_913->also_requires_tag = ['amp-reach-player extension .js script'];
+  $o_913->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_913->also_requires_tag = array('amp-reach-player extension .js script');
   $o_0->tags[] = $o_913;
   $o_916 = new TagSpec();
   $o_916->tag_name = 'script';
@@ -3928,13 +3928,13 @@ class ValidationRulesFactory {
   $o_924->name = 'side';
   $o_924->value_regex = '(left|right)';
   $o_923->attrs[] = $o_924;
-  $o_923->attr_lists = ['extended-amp-global'];
+  $o_923->attr_lists = array('extended-amp-global');
   $o_923->spec_url = 'https://github.com/ampproject/amphtml/blob/master/extensions/amp-sidebar/amp-sidebar.md';
   $o_925 = new AmpLayout();
-  $o_925->supported_layouts = [AmpLayoutLayout::NODISPLAY];
+  $o_925->supported_layouts = array(AmpLayoutLayout::NODISPLAY);
   $o_923->amp_layout = $o_925;
-  $o_923->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_923->also_requires_tag = ['amp-sidebar extension .js script'];
+  $o_923->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_923->also_requires_tag = array('amp-sidebar extension .js script');
   $o_0->tags[] = $o_923;
   $o_926 = new TagSpec();
   $o_926->tag_name = 'script';
@@ -4009,17 +4009,17 @@ class ValidationRulesFactory {
   $o_942 = new AttrSpec();
   $o_942->name = 'data-share-endpoint';
   $o_943 = new UrlSpec();
-  $o_943->allowed_protocol = ['ftp', 'http', 'https', 'mailto', 'fb-messenger', 'snapchat', 'sms', 'tel', 'viber', 'whatsapp'];
+  $o_943->allowed_protocol = array('ftp', 'http', 'https', 'mailto', 'fb-messenger', 'snapchat', 'sms', 'tel', 'viber', 'whatsapp');
   $o_943->allow_relative = false;
   $o_942->value_url = $o_943;
   $o_940->attrs[] = $o_942;
-  $o_940->attr_lists = ['extended-amp-global'];
+  $o_940->attr_lists = array('extended-amp-global');
   $o_940->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-social-share.html';
   $o_944 = new AmpLayout();
-  $o_944->supported_layouts = [AmpLayoutLayout::CONTAINER, AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_944->supported_layouts = array(AmpLayoutLayout::CONTAINER, AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_940->amp_layout = $o_944;
-  $o_940->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_940->also_requires_tag = ['amp-social-share extension .js script'];
+  $o_940->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_940->also_requires_tag = array('amp-social-share extension .js script');
   $o_0->tags[] = $o_940;
   $o_945 = new TagSpec();
   $o_945->tag_name = 'script';
@@ -4068,13 +4068,13 @@ class ValidationRulesFactory {
   $o_955->name = 'data-visual';
   $o_955->value_regex = 'true|false';
   $o_952->attrs[] = $o_955;
-  $o_952->attr_lists = ['extended-amp-global'];
+  $o_952->attr_lists = array('extended-amp-global');
   $o_952->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-soundcloud.html';
   $o_956 = new AmpLayout();
-  $o_956->supported_layouts = [AmpLayoutLayout::FIXED_HEIGHT];
+  $o_956->supported_layouts = array(AmpLayoutLayout::FIXED_HEIGHT);
   $o_952->amp_layout = $o_956;
-  $o_952->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_952->also_requires_tag = ['amp-soundcloud extension .js script'];
+  $o_952->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_952->also_requires_tag = array('amp-soundcloud extension .js script');
   $o_0->tags[] = $o_952;
   $o_957 = new TagSpec();
   $o_957->tag_name = 'script';
@@ -4137,13 +4137,13 @@ class ValidationRulesFactory {
   $o_970->mandatory = true;
   $o_970->value_regex = '[0-9]+';
   $o_964->attrs[] = $o_970;
-  $o_964->attr_lists = ['extended-amp-global'];
+  $o_964->attr_lists = array('extended-amp-global');
   $o_964->spec_url = 'https://github.com/ampproject/amphtml/blob/master/extensions/amp-springboard-player/amp-springboard-player.html';
   $o_971 = new AmpLayout();
-  $o_971->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::RESPONSIVE];
+  $o_971->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::RESPONSIVE);
   $o_964->amp_layout = $o_971;
-  $o_964->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_964->also_requires_tag = ['amp-springboard-player extension .js script'];
+  $o_964->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_964->also_requires_tag = array('amp-springboard-player extension .js script');
   $o_0->tags[] = $o_964;
   $o_972 = new TagSpec();
   $o_972->tag_name = 'script';
@@ -4180,16 +4180,16 @@ class ValidationRulesFactory {
   $o_979 = new TagSpec();
   $o_979->tag_name = 'amp-sticky-ad';
   $o_979->unique = true;
-  $o_979->attr_lists = ['extended-amp-global'];
+  $o_979->attr_lists = array('extended-amp-global');
   $o_979->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-sticky-ad.html';
   $o_980 = new AmpLayout();
-  $o_980->supported_layouts = [AmpLayoutLayout::NODISPLAY];
+  $o_980->supported_layouts = array(AmpLayoutLayout::NODISPLAY);
   $o_979->amp_layout = $o_980;
-  $o_979->disallowed_ancestor = ['amp-sidebar'];
-  $o_979->also_requires_tag = ['amp-sticky-ad extension .js script'];
+  $o_979->disallowed_ancestor = array('amp-sidebar');
+  $o_979->also_requires_tag = array('amp-sticky-ad extension .js script');
   $o_981 = new ChildTagSpec();
   $o_981->mandatory_num_child_tags = 1;
-  $o_981->first_child_tag_name_oneof = ['amp-ad'];
+  $o_981->first_child_tag_name_oneof = array('amp-ad');
   $o_979->child_tags = $o_981;
   $o_0->tags[] = $o_979;
   $o_982 = new TagSpec();
@@ -4234,17 +4234,17 @@ class ValidationRulesFactory {
   $o_991->name = 'src';
   $o_991->mandatory_oneof = '[\'data-tweetid\', \'src\']';
   $o_992 = new UrlSpec();
-  $o_992->allowed_protocol = ['http', 'https'];
+  $o_992->allowed_protocol = array('http', 'https');
   $o_992->allow_relative = true;
   $o_991->value_url = $o_992;
   $o_989->attrs[] = $o_991;
-  $o_989->attr_lists = ['extended-amp-global'];
+  $o_989->attr_lists = array('extended-amp-global');
   $o_989->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-twitter.html';
   $o_993 = new AmpLayout();
-  $o_993->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_993->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_989->amp_layout = $o_993;
-  $o_989->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_989->also_requires_tag = ['amp-twitter extension .js script'];
+  $o_989->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_989->also_requires_tag = array('amp-twitter extension .js script');
   $o_0->tags[] = $o_989;
   $o_994 = new TagSpec();
   $o_994->tag_name = 'script';
@@ -4280,13 +4280,13 @@ class ValidationRulesFactory {
   $o_0->tags[] = $o_994;
   $o_1001 = new TagSpec();
   $o_1001->tag_name = 'amp-user-notification';
-  $o_1001->attr_lists = ['extended-amp-global'];
+  $o_1001->attr_lists = array('extended-amp-global');
   $o_1001->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-user-notification.html';
   $o_1002 = new AmpLayout();
-  $o_1002->supported_layouts = [AmpLayoutLayout::NODISPLAY];
+  $o_1002->supported_layouts = array(AmpLayoutLayout::NODISPLAY);
   $o_1001->amp_layout = $o_1002;
-  $o_1001->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_1001->also_requires_tag = ['amp-analytics extension .js script', 'amp-user-notification extension .js script'];
+  $o_1001->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_1001->also_requires_tag = array('amp-analytics extension .js script', 'amp-user-notification extension .js script');
   $o_0->tags[] = $o_1001;
   $o_1003 = new TagSpec();
   $o_1003->tag_name = 'script';
@@ -4327,13 +4327,13 @@ class ValidationRulesFactory {
   $o_1011->mandatory = true;
   $o_1011->value_regex = '[0-9]+';
   $o_1010->attrs[] = $o_1011;
-  $o_1010->attr_lists = ['extended-amp-global'];
+  $o_1010->attr_lists = array('extended-amp-global');
   $o_1010->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-vimeo.html';
   $o_1012 = new AmpLayout();
-  $o_1012->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::RESPONSIVE];
+  $o_1012->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::RESPONSIVE);
   $o_1010->amp_layout = $o_1012;
-  $o_1010->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_1010->also_requires_tag = ['amp-vimeo extension .js script'];
+  $o_1010->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_1010->also_requires_tag = array('amp-vimeo extension .js script');
   $o_0->tags[] = $o_1010;
   $o_1013 = new TagSpec();
   $o_1013->tag_name = 'script';
@@ -4373,13 +4373,13 @@ class ValidationRulesFactory {
   $o_1021->name = 'data-vineid';
   $o_1021->mandatory = true;
   $o_1020->attrs[] = $o_1021;
-  $o_1020->attr_lists = ['extended-amp-global'];
+  $o_1020->attr_lists = array('extended-amp-global');
   $o_1020->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-vine.html';
   $o_1022 = new AmpLayout();
-  $o_1022->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_1022->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_1020->amp_layout = $o_1022;
-  $o_1020->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_1020->also_requires_tag = ['amp-vine extension .js script'];
+  $o_1020->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_1020->also_requires_tag = array('amp-vine extension .js script');
   $o_0->tags[] = $o_1020;
   $o_1023 = new TagSpec();
   $o_1023->tag_name = 'script';
@@ -4423,7 +4423,7 @@ class ValidationRulesFactory {
   $o_1032->name = 'src';
   $o_1032->mandatory_oneof = '[\'src\', \'data-videoid\']';
   $o_1033 = new UrlSpec();
-  $o_1033->allowed_protocol = ['http', 'https'];
+  $o_1033->allowed_protocol = array('http', 'https');
   $o_1033->allow_relative = true;
   $o_1032->value_url = $o_1033;
   $o_1030->attrs[] = $o_1032;
@@ -4433,13 +4433,13 @@ class ValidationRulesFactory {
   $o_1034->deprecation_url = 'https://www.ampproject.org/docs/reference/extended/amp-youtube.html';
   $o_1034->mandatory_oneof = '[\'src\', \'data-videoid\']';
   $o_1030->attrs[] = $o_1034;
-  $o_1030->attr_lists = ['extended-amp-global'];
+  $o_1030->attr_lists = array('extended-amp-global');
   $o_1030->spec_url = 'https://www.ampproject.org/docs/reference/extended/amp-youtube.html';
   $o_1035 = new AmpLayout();
-  $o_1035->supported_layouts = [AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE];
+  $o_1035->supported_layouts = array(AmpLayoutLayout::FILL, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::FLEX_ITEM, AmpLayoutLayout::NODISPLAY, AmpLayoutLayout::RESPONSIVE);
   $o_1030->amp_layout = $o_1035;
-  $o_1030->disallowed_ancestor = ['head', 'amp-sidebar'];
-  $o_1030->also_requires_tag = ['amp-youtube extension .js script'];
+  $o_1030->disallowed_ancestor = array('head', 'amp-sidebar');
+  $o_1030->also_requires_tag = array('amp-youtube extension .js script');
   $o_0->tags[] = $o_1030;
   $o_0->min_validator_revision_required = 135;
   $o_0->spec_file_revision = 228;
@@ -4473,7 +4473,7 @@ class ValidationRulesFactory {
   $o_1045 = new AttrSpec();
   $o_1045->name = 'cite';
   $o_1046 = new UrlSpec();
-  $o_1046->allowed_protocol = ['http', 'https', 'mailto', 'ftp', 'fb-messenger', 'sms', 'tel', 'viber', 'whatsapp'];
+  $o_1046->allowed_protocol = array('http', 'https', 'mailto', 'ftp', 'fb-messenger', 'sms', 'tel', 'viber', 'whatsapp');
   $o_1046->allow_relative = true;
   $o_1045->value_url = $o_1046;
   $o_1044->attrs[] = $o_1045;
@@ -4484,7 +4484,7 @@ class ValidationRulesFactory {
   $o_1048->name = 'src';
   $o_1048->mandatory = true;
   $o_1049 = new UrlSpec();
-  $o_1049->allowed_protocol = ['https'];
+  $o_1049->allowed_protocol = array('https');
   $o_1049->allow_relative = false;
   $o_1048->value_url = $o_1049;
   $o_1047->attrs[] = $o_1048;
@@ -4509,7 +4509,7 @@ class ValidationRulesFactory {
   $o_1055->name = 'src';
   $o_1055->mandatory = true;
   $o_1056 = new UrlSpec();
-  $o_1056->allowed_protocol = ['https'];
+  $o_1056->allowed_protocol = array('https');
   $o_1056->allow_relative = false;
   $o_1055->value_url = $o_1056;
   $o_1054->attrs[] = $o_1055;
@@ -4811,10 +4811,10 @@ class ValidationRulesFactory {
   $o_1153->name = 'mandatory-src-or-srcset';
   $o_1154 = new AttrSpec();
   $o_1154->name = 'src';
-  $o_1154->alternative_names = ['srcset'];
+  $o_1154->alternative_names = array('srcset');
   $o_1154->mandatory = true;
   $o_1155 = new UrlSpec();
-  $o_1155->allowed_protocol = ['data', 'http', 'https'];
+  $o_1155->allowed_protocol = array('data', 'http', 'https');
   $o_1155->allow_relative = true;
   $o_1154->value_url = $o_1155;
   $o_1153->attrs[] = $o_1154;
@@ -5000,7 +5000,7 @@ class ValidationRulesFactory {
   $o_1215->name = 'on';
   $o_1216 = new AttrTriggerSpec();
   $o_1216->if_value_regex = 'tap:.*';
-  $o_1216->also_requires_attr = ['role', 'tabindex'];
+  $o_1216->also_requires_attr = array('role', 'tabindex');
   $o_1215->trigger = $o_1216;
   $o_1165->attrs[] = $o_1215;
   $o_1217 = new AttrSpec();

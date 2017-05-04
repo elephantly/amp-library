@@ -218,7 +218,7 @@ class ImgTagTransformPass extends BasePass
      */
     protected function isAnimatedImg(\DOMElement $el)
     {
-        $animated_type = ['gif', 'png'];
+        $animated_type = array('gif', 'png');
         if (!$el->hasAttribute('src')) {
             return true;
         }
@@ -329,7 +329,7 @@ class ImgTagTransformPass extends BasePass
     protected function setResponsiveImgHeightAndWidth(DOMQuery $el)
     {
         // Static cache
-        static $image_dimensions_cache = [];
+        static $image_dimensions_cache = array();
 
         $wcss = new CssLengthAndUnit($el->attr('width'), false);
         $hcss = new CssLengthAndUnit($el->attr('height'), false);

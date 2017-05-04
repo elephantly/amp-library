@@ -23,14 +23,14 @@ use Lullabot\AMP\Spec\ValidationResultStatus;
  * Class GroupedValidationResult
  * @package Lullabot\AMP\Validate
  *
- * This class does not exist in the canonical validator [1].
+ * This class does not exist in the canonical validator array(1].
  *
- * [1] See https://github.com/ampproject/amphtml/blob/master/validator/validator.js
+ * array(1] See https://github.com/ampproject/amphtml/blob/master/validator/validator.js
  *     and https://github.com/ampproject/amphtml/tree/master/validator
  */
 class GroupedValidationResult
 {
     public $status = ValidationResultStatus::UNKNOWN;
     /** @var GroupedValidationError[] */
-    public $grouped_validation_errors = [];
+    public $grouped_validation_errors = array();
 }

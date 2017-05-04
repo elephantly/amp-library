@@ -48,7 +48,7 @@ class AMP
     // The StandardScanPass should be first after all transform passes
     // The StandardFixPass should be after StandardScanPass
     // The ObjectVideoTagTransformPass should be after all Object transform passes
-    public $passes = [
+    public $passes = array(
         'Lullabot\AMP\Pass\PreliminaryPass', // Removes user blacklisted tags
         'Lullabot\AMP\Pass\ImgTagTransformPass',
         'Lullabot\AMP\Pass\IframeSoundCloudTagTransformPass',
@@ -73,10 +73,10 @@ class AMP
         'Lullabot\AMP\Pass\StandardFixPassTwo',
         'Lullabot\AMP\Pass\MinimumValidFixPass',
         'Lullabot\AMP\Pass\StatisticsPass'
-    ];
+    );
 
     /** @var ActionTakenLine[] */
-    protected $action_taken = [];
+    protected $action_taken = array();
     /** @var string */
     protected $input_html = '';
     /** @var string */
@@ -94,7 +94,7 @@ class AMP
     /** @var string */
     protected $scope = Scope::BODY_SCOPE;
     /** @var string[] */
-    protected $component_js = [];
+    protected $component_js = array();
     /** @var array */
     protected $options;
 
@@ -151,7 +151,7 @@ class AMP
      * @param array $options
      * @throws \Exception
      */
-    public function loadHtml($html, $options = [])
+    public function loadHtml($html, $options = array())
     {
         $this->clear();
         // Deal with with some edge cases
@@ -198,7 +198,7 @@ class AMP
         $this->scope = $options['scope'];
 
         // Currently we only support these two scopes
-        if (!in_array($this->scope, [Scope::HTML_SCOPE, Scope::BODY_SCOPE])) {
+        if (!in_array($this->scope, array(Scope::HTML_SCOPE, Scope::BODY_SCOPE])) {
             throw new \Exception("Invalid or currently unsupported scope $this->scope");
         }
 
@@ -222,7 +222,7 @@ class AMP
 
         // What is the base relative directory. For http://www.cnn.com/abc/zyz?1234 it is http://www.cnn.com/abc/
         if (empty($this->options['base_url_for_relative_path']) && !empty($_SERVER['REQUEST_URI'])) {
-            $matches = [];
+            $matches = array();
             $full_url = $this->options['server_url'] . $_SERVER['REQUEST_URI'];
             if (preg_match('&(.*/)&', $full_url, $matches)) {
                 $this->options['base_url_for_relative_path'] = $matches[1];
@@ -242,10 +242,10 @@ class AMP
     public function clear()
     {
         $this->input_html = '';
-        $this->action_taken = [];
+        $this->action_taken = array();
         $this->amp_html = '';
-        $this->options = [];
-        $this->component_js = [];
+        $this->options = array();
+        $this->component_js = array();
         $this->validation_result = new SValidationResult();
         $this->validation_result->status = ValidationResultStatus::UNKNOWN;
         $this->grouped_validation_result = new GroupedValidationResult();
@@ -379,10 +379,10 @@ class AMP
         if ($use_html5_parser) {
             $amphtml5 = new AMPHTML5();
             $html5_dom = $amphtml5->loadHTML($document_html);
-            $qp = new DOMQuery($html5_dom, null, ['convert_to_encoding' => 'UTF-8']);
+            $qp = new DOMQuery($html5_dom, null, array('convert_to_encoding' => 'UTF-8'));
             $this->addParsingErrors($amphtml5);
         } else {
-            $qp = QueryPath::withHTML($document_html, null, ['convert_to_encoding' => 'UTF-8']);
+            $qp = QueryPath::withHTML($document_html, null, array('convert_to_encoding' => 'UTF-8'));
         }
 
         return $qp;
@@ -396,11 +396,11 @@ class AMP
         /** @var string[] $errors */
         $errors = $amphtml->getErrors();
         foreach ($errors as $error_msg) {
-            $matches = [];
+            $matches = array();
             if (preg_match('/(*UTF8)Line(?:.*?)(\d+)(?:.*?)Col(?:.*?)(\d+)(?:.*?)Unexpected characters in attribute name: (.*)/i', $error_msg, $matches)) {
                 if (mb_strpos($matches[3], '{{', 0, 'UTF-8') !== false) {
                     $this->context->addError(ValidationErrorCode::TEMPLATE_IN_ATTR_NAME,
-                        [$matches[3], "at location line $matches[1], col $matches[2]"],
+                        array($matches[3], "at location line $matches[1], col $matches[2]"],
                         $this->rules->template_spec_url, $this->validation_result);
                 }
             }
@@ -430,11 +430,11 @@ class AMP
         $document_html = $this->makeFullDocument($this->input_html);
 
         // Used in the StatisticsPass
-        $stats_data = [
+        $stats_data = array(
             'start_time' => microtime(true),
             'start_memory' => memory_get_usage(),
             'start_memory_peak' => memory_get_peak_usage()
-        ];
+        );
 
         $this->context->setStatsData($stats_data);
         $qp = $this->getDOMQuery($document_html, $this->options['use_html5_parser']);
@@ -598,7 +598,7 @@ class AMP
      * @return string
      * @throws \Exception
      */
-    public function consoleOutput($filename = 'php://stdin', $options = [], $full_document = false, $js = false, $no_lines = false, $diff = false, $no_orig_and_warn = false, $verbose = false)
+    public function consoleOutput($filename = 'php://stdin', $options = array(], $full_document = false, $js = false, $no_lines = false, $diff = false, $no_orig_and_warn = false, $verbose = false)
     {
         if ($verbose) {
             error_reporting(E_ALL);
@@ -610,25 +610,25 @@ class AMP
         }
 
         // original setting takes precedence
-        $options += ['filename' => $filename]; // So warnings can be printed out with filename appending to line number
+        $options += array('filename' => $filename); // So warnings can be printed out with filename appending to line number
 
         if ($full_document) {
             // original setting takes precedence
-            $options += ['scope' => Scope::HTML_SCOPE];
+            $options += array('scope' => Scope::HTML_SCOPE);
         }
 
         $this->loadHtml($file_html, $options);
         $amp_html = $this->convertToAmpHtml();
 
         // original setting takes precedence
-        $options += ['no_lines' => $no_lines];
+        $options += array('no_lines' => $no_lines);
         if (!$options['no_lines']) {
             // now this is our new output html
             $amp_html = $this->getStringWithLineNumbers($amp_html);
         }
 
         // original setting takes precedence
-        $options += ['diff' => $diff];
+        $options += array('diff' => $diff);
 
         $output = '';
         // Show the diff if the option is set
@@ -640,7 +640,7 @@ class AMP
         }
 
         // original setting takes precedence
-        $options += ['no_orig_and_warn' => $no_orig_and_warn];
+        $options += array('no_orig_and_warn' => $no_orig_and_warn);
 
         // Show the warnings by default
         if (!$options['no_orig_and_warn']) {
@@ -651,7 +651,7 @@ class AMP
         }
 
         // original setting takes precedence
-        $options += ['js' => $js];
+        $options += array('js' => $js);
 
         // Show the components with js urls
         if ($options['js']) {
@@ -718,7 +718,7 @@ class AMP
     public function getOptionsFromStandardOptionFile($test_filename)
     {
         $options_filename = $test_filename . '.options.json';
-        $options = [];
+        $options = array();
         if (file_exists($options_filename)) {
             $options = $this->getOptions($options_filename);
         }

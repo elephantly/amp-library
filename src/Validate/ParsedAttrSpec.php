@@ -36,9 +36,9 @@ class ParsedAttrSpec
     /** @var  AttrSpec */
     public $spec;
     /** @var PropertySpec[] */
-    public $value_property_by_name = [];
+    public $value_property_by_name = array();
     /** @var PropertySpec[] */
-    public $mandatory_value_property_names = [];
+    public $mandatory_value_property_names = array();
     /** @var ParsedAttrTriggerSpec|null */
     public $trigger_spec = null;
     /** @var ParsedUrlSpec */
@@ -99,7 +99,7 @@ class ParsedAttrSpec
      */
     public function validateAttrValueUrl(Context $context, $attr_name, $attr_value, TagSpec $tagspec, $spec_url, SValidationResult $validation_result)
     {
-        $maybe_uris = []; // A Set
+        $maybe_uris = array(); // A Set
         if ($attr_name != 'srcset') {
             // Treat as a Set
             $maybe_uris[trim($attr_value)] = 1;
@@ -117,7 +117,7 @@ class ParsedAttrSpec
 
         if (empty($maybe_uris)) {
             $context->addError(ValidationErrorCode::MISSING_URL,
-                [$attr_name, ParsedTagSpec::getTagSpecName($tagspec)], $spec_url, $validation_result, $attr_name);
+                array($attr_name, ParsedTagSpec::getTagSpecName($tagspec)], $spec_url, $validation_result, $attr_name);
             return;
         }
 
@@ -146,8 +146,8 @@ class ParsedAttrSpec
     public function validateAttrValueProperties(Context $context, $attr_name, $attr_value, TagSpec $tagspec, $spec_url, SValidationResult $result)
     {
         $segments = explode(',', $attr_value);
-        $properties = [];
-        $properties_segment = [];
+        $properties = array();
+        $properties_segment = array();
         /** @var string $segment */
         foreach ($segments as $segment) {
             $key_value = explode('=', $segment);
@@ -164,7 +164,7 @@ class ParsedAttrSpec
             $segment = $properties_segment[$name];
             if (!isset($this->value_property_by_name[$name])) {
                 $context->addError(ValidationErrorCode::DISALLOWED_PROPERTY_IN_ATTR_VALUE,
-                    [$name, $attr_name, ParsedTagSpec::getTagSpecName($tagspec)], $spec_url, $result, $attr_name, $segment);
+                    array($name, $attr_name, ParsedTagSpec::getTagSpecName($tagspec)], $spec_url, $result, $attr_name, $segment);
                 continue;
             }
             /** @var PropertySpec $property_spec */
@@ -172,12 +172,12 @@ class ParsedAttrSpec
             if (!empty($property_spec->value)) {
                 if ($property_spec->value != mb_strtolower($value, 'UTF-8')) {
                     $context->addError(ValidationErrorCode::INVALID_PROPERTY_VALUE_IN_ATTR_VALUE,
-                        [$name, $attr_name, ParsedTagSpec::getTagSpecName($tagspec), $value], $spec_url, $result, $attr_name, $segment);
+                        array($name, $attr_name, ParsedTagSpec::getTagSpecName($tagspec), $value], $spec_url, $result, $attr_name, $segment);
                 }
             } else if (!empty($property_spec->value_double)) {
                 if (!is_numeric($value) || ((float)$property_spec->value_double) !== ((float)$value)) {
                     $context->addError(ValidationErrorCode::INVALID_PROPERTY_VALUE_IN_ATTR_VALUE,
-                        [$name, $attr_name, ParsedTagSpec::getTagSpecName($tagspec), $value], $spec_url, $result, $attr_name, $segment);
+                        array($name, $attr_name, ParsedTagSpec::getTagSpecName($tagspec), $value], $spec_url, $result, $attr_name, $segment);
                 }
             }
         }
@@ -187,7 +187,7 @@ class ParsedAttrSpec
         foreach ($this->mandatory_value_property_names as $mandatory_value_property_name) {
             if (false === array_search($mandatory_value_property_name->name, $names)) {
                 $context->addError(ValidationErrorCode::MANDATORY_PROPERTY_MISSING_FROM_ATTR_VALUE,
-                    [$mandatory_value_property_name->name, $attr_name, ParsedTagSpec::getTagSpecName($tagspec)],
+                    array($mandatory_value_property_name->name, $attr_name, ParsedTagSpec::getTagSpecName($tagspec)],
                     $spec_url, $result, $attr_name);
             }
         }
@@ -217,7 +217,7 @@ class ParsedAttrSpec
             }
 
             $context->addError(ValidationErrorCode::INVALID_ATTR_VALUE,
-                [$encountered_attr_name, ParsedTagSpec::getTagSpecName($tag_spec), $encountered_attr_value],
+                array($encountered_attr_name, ParsedTagSpec::getTagSpecName($tag_spec), $encountered_attr_value],
                 $tag_spec->spec_url, $result_for_attempt, $encountered_attr_name);
 
             return false;
@@ -232,7 +232,7 @@ class ParsedAttrSpec
             // if it _doesn't_ match its an error
             if (!preg_match($value_regex, $encountered_attr_value)) {
                 $context->addError(ValidationErrorCode::INVALID_ATTR_VALUE,
-                    [$encountered_attr_name, ParsedTagSpec::getTagSpecName($tag_spec), $encountered_attr_value],
+                    array($encountered_attr_name, ParsedTagSpec::getTagSpecName($tag_spec), $encountered_attr_value],
                     $tag_spec->spec_url, $result_for_attempt, $encountered_attr_name);
                 return false;
             }

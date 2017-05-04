@@ -39,14 +39,14 @@ class ParsedValidatorRules
     /** @var ValidatorRules */
     public $rules;
     /** @var string[] */
-    public $format_by_code = [];
+    public $format_by_code = array();
     /** @var TagSpecDispatch[] */
-    protected $tag_dispatch_by_tag_name = [];
+    protected $tag_dispatch_by_tag_name = array();
     /** @var \SplObjectStorage */ // key is a TagSpec, value is a ParsedTagSpec
     protected $all_parsed_specs_by_specs;
 
     /** @var ParsedTagSpec[] */
-    protected $mandatory_tag_specs = [];
+    protected $mandatory_tag_specs = array();
 
     /** @var ParsedValidatorRules|null */
     public static $parsed_validator_rules_singleton = null;
@@ -80,14 +80,14 @@ class ParsedValidatorRules
         $this->all_parsed_specs_by_specs = new \SplObjectStorage();
 
         /** @var AttrList[] $attr_lists_by_name */
-        $attr_lists_by_name = [];
+        $attr_lists_by_name = array();
         foreach ($this->rules->attr_lists as $attr_list_obj) {
             $attr_lists_by_name[$attr_list_obj->name] = $attr_list_obj;
         }
 
-        $tagspec_by_detail_or_name = [];
+        $tagspec_by_detail_or_name = array();
         // This is a set
-        $detail_or_names_to_track = [];
+        $detail_or_names_to_track = array();
         /** @var TagSpec $tagspec */
         foreach ($this->rules->tags as $tagspec) {
             assert(empty($tagspec_by_detail_or_name[ParsedTagSpec::getTagSpecName($tagspec)]));
@@ -149,7 +149,7 @@ class ParsedValidatorRules
         /** @var TagSpecDispatch $tag_spec_dispatch */
         $tag_spec_dispatch = isset($this->tag_dispatch_by_tag_name[$tag_name]) ? $this->tag_dispatch_by_tag_name[$tag_name] : null;
         if (empty($tag_spec_dispatch)) {
-            $context->addError(ValidationErrorCode::DISALLOWED_TAG, [$tag_name], '', $validation_result);
+            $context->addError(ValidationErrorCode::DISALLOWED_TAG, array($tag_name], '', $validation_result);
             return;
         }
 
@@ -175,7 +175,7 @@ class ParsedValidatorRules
             }
 
             if (!$tag_spec_dispatch->hasTagSpecs()) {
-                $context->addError(ValidationErrorCode::GENERAL_DISALLOWED_TAG, [$tag_name], '', $validation_result);
+                $context->addError(ValidationErrorCode::GENERAL_DISALLOWED_TAG, array($tag_name], '', $validation_result);
                 return;
             }
         }
@@ -262,7 +262,7 @@ class ParsedValidatorRules
         /** @var TagSpec $spec */
         $spec = $parsed_spec->getSpec();
         if (!empty($spec->deprecation)) {
-            $context->addError(ValidationErrorCode::DEPRECATED_TAG, [ParsedTagSpec::getTagSpecName($spec), $spec->deprecation], $spec->deprecation_url, $result_for_best_attempt);
+            $context->addError(ValidationErrorCode::DEPRECATED_TAG, array(ParsedTagSpec::getTagSpecName($spec), $spec->deprecation], $spec->deprecation_url, $result_for_best_attempt);
             // don't return as its just a warning, see Context::severityFor()
         }
 
@@ -271,7 +271,7 @@ class ParsedValidatorRules
             if ($parsed_spec->getSpec()->unique && $is_unique !== true) {
                 /** @var ParsedTagSpec $parsed_spec */
                 $spec = $parsed_spec->getSpec();
-                $context->addError(ValidationErrorCode::DUPLICATE_UNIQUE_TAG, [ParsedTagSpec::getTagSpecName($spec)], $spec->spec_url, $result_for_best_attempt);
+                $context->addError(ValidationErrorCode::DUPLICATE_UNIQUE_TAG, array(ParsedTagSpec::getTagSpecName($spec)], $spec->spec_url, $result_for_best_attempt);
                 return;
             }
         }
@@ -300,7 +300,7 @@ class ParsedValidatorRules
             $tagspec = $parsed_tag_spec->getSpec();
             if (!$context->getTagspecsValidated()->contains($parsed_tag_spec)) {
                 if (!$context->addError(ValidationErrorCode::MANDATORY_TAG_MISSING,
-                    [ParsedTagSpec::getTagSpecName($tagspec)], $tagspec->spec_url, $validation_result)
+                    array(ParsedTagSpec::getTagSpecName($tagspec)], $tagspec->spec_url, $validation_result)
                 ) {
                     return;
                 };
@@ -334,7 +334,7 @@ class ParsedValidatorRules
 
                 if (!$context->getTagspecsValidated()->contains($parsed_tag_spec_require)) {
                     if (!$context->addError(ValidationErrorCode::TAG_REQUIRED_BY_MISSING,
-                        [ParsedTagSpec::getTagSpecName($tagspec_require), ParsedTagSpec::getTagSpecName($parsed_tag_spec->getSpec())],
+                        array(ParsedTagSpec::getTagSpecName($tagspec_require), ParsedTagSpec::getTagSpecName($parsed_tag_spec->getSpec())],
                         $tagspec_require->spec_url, $validation_result)
                     ) {
                         return;
@@ -352,7 +352,7 @@ class ParsedValidatorRules
 
         /** @var  $satisfied_alternatives */
         $satisfied_alternatives = $context->getMandatoryAlternativesSatisfied();
-        $missing_mandatory_alternatives = [];
+        $missing_mandatory_alternatives = array();
         /** @var TagSpec $tagspec */
         // Remember that we're iterating through SplObjectStorage here
         foreach ($this->all_parsed_specs_by_specs as $tagspec) {
@@ -367,7 +367,7 @@ class ParsedValidatorRules
         }
 
         foreach ($missing_mandatory_alternatives as $missing_tag_detail => $missing_spec_url) {
-            if (!$context->addError(ValidationErrorCode::MANDATORY_TAG_MISSING, [$missing_tag_detail], $missing_spec_url, $validation_result)) {
+            if (!$context->addError(ValidationErrorCode::MANDATORY_TAG_MISSING, array($missing_tag_detail], $missing_spec_url, $validation_result)) {
                 return;
             }
         }

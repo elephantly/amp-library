@@ -24,9 +24,9 @@ use Lullabot\AMP\Utility\ActionTakenLine;
  * Class GroupedValidationError
  * @package Lullabot\AMP\Validate
  *
- * This class does not exist in the canonical validator [1].
+ * This class does not exist in the canonical validator array(1].
  *
- * [1] See https://github.com/ampproject/amphtml/blob/master/validator/validator.js
+ * array(1] See https://github.com/ampproject/amphtml/blob/master/validator/validator.js
  *     and https://github.com/ampproject/amphtml/tree/master/validator
  */
 class GroupedValidationError
@@ -38,7 +38,7 @@ class GroupedValidationError
     /** @var int */
     public $line;
     /** @var SValidationError[] */
-    public $validation_errors = [];
+    public $validation_errors = array();
     /** @var string */
     public $phase;
     /** @var ActionTakenLine $action_taken */

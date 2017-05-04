@@ -28,9 +28,9 @@ namespace Lullabot\AMP\Validate;
 class TagSpecDispatch
 {
     /** @var ParsedTagSpec[] */
-    protected $all_tag_specs = [];
+    protected $all_tag_specs = array();
     /** @var ParsedTagSpec[] */
-    protected $tag_specs_by_dispatch = [];
+    protected $tag_specs_by_dispatch = array();
 
     /**
      * @param string $dispatch_key

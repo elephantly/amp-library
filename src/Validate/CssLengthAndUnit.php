@@ -51,7 +51,7 @@ class CssLengthAndUnit
                 $this->is_valid = $allow_auto;
             } else {
                 $regex = '/^\d+(?:\.\d+)?(px|em|rem|vh|vw|vmin|vmax)?$/';
-                $matches = [];
+                $matches = array();
                 if (preg_match($regex, $input, $matches)) {
                     $this->is_valid = true;
                     if (!empty($matches[1])) {

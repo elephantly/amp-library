@@ -36,12 +36,12 @@ use Lullabot\AMP\Validate\Context;
 class StandardFixPassTwo extends BasePass
 {
     // CDATA components in head
-    protected $cdata_components = [
+    protected $cdata_components = array(
         'noscript > style[amp-boilerplate]' => 'body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}',
         'head > style[amp-boilerplate]' => 'body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}',
         'noscript > style[amp-boilerplate] - old variant' => 'body {opacity: 1}',
         'head > style[amp-boilerplate] - old variant' => 'body {opacity: 0}'
-    ];
+    );
 
     public function pass()
     {
@@ -89,7 +89,7 @@ class StandardFixPassTwo extends BasePass
             $local_context->detachDomTag();
         }
 
-        return [];
+        return array();
     }
 
     /**
@@ -104,7 +104,7 @@ class StandardFixPassTwo extends BasePass
                 !$error->resolved &&
                 !empty($error->dom_tag)
             ) {
-                // $error->params[1] looks something like this ['src', 'data-videoid']
+                // $error->params[1] looks something like this array('src', 'data-videoid']
                 $attributes = json_decode(str_replace("'", '"', $error->params[1]));
                 if (!is_array($attributes) || count($attributes) < 2) {
                     continue;

@@ -87,7 +87,7 @@ class TwitterTransformPass extends BasePass
         $data_cards_hidden = false;
 
         foreach ($el->attr() as $attr_name => $attr_value) {
-            if (mb_strpos($attr_name, 'data-', 0, 'UTF-8') !== 0 && !in_array($attr_name, ['width', 'height'])) {
+            if (mb_strpos($attr_name, 'data-', 0, 'UTF-8') !== 0 && !in_array($attr_name, array('width', 'height'])) {
                 continue;
             }
 
@@ -139,7 +139,7 @@ class TwitterTransformPass extends BasePass
         // Get the shortcode from the first <a> tag that matches regex and exit
         foreach ($links as $link) {
             $href = $link->attr('href');
-            $matches = [];
+            $matches = array();
             if (preg_match('&(*UTF8)twitter.com/.*/status(?:es)?/([^/]+)&i', $href, $matches)) {
                 if (!empty($matches[1])) {
                     $tweet_id = $matches[1];

@@ -38,7 +38,7 @@ class ParsedUrlSpecStyleSheetErrorAdapter
     public function missingUrl(Context $context, TagSpec $tagspec, SValidationResult $result, $line_delta = 0)
     {
         $context->addError(ValidationErrorCode::CSS_SYNTAX_MISSING_URL,
-            [ParsedTagSpec::getTagSpecName($tagspec)], $tagspec->spec_url, $result, '', '', $line_delta);
+            array(ParsedTagSpec::getTagSpecName($tagspec)], $tagspec->spec_url, $result, '', '', $line_delta);
     }
 
     /**
@@ -51,7 +51,7 @@ class ParsedUrlSpecStyleSheetErrorAdapter
     public function invalidUrl(Context $context, $url, TagSpec $tagspec, SValidationResult $result, $line_delta = 0)
     {
         $context->addError(ValidationErrorCode::CSS_SYNTAX_INVALID_URL,
-            [ParsedTagSpec::getTagSpecName($tagspec), $url], $tagspec->spec_url, $result, '', '', $line_delta);
+            array(ParsedTagSpec::getTagSpecName($tagspec), $url], $tagspec->spec_url, $result, '', '', $line_delta);
     }
 
     /**
@@ -64,7 +64,7 @@ class ParsedUrlSpecStyleSheetErrorAdapter
     public function invalidUrlProtocol(Context $context, $uri_scheme, TagSpec $tagspec, SValidationResult $result, $line_delta = 0)
     {
         $context->addError(ValidationErrorCode::CSS_SYNTAX_INVALID_URL_PROTOCOL,
-            [ParsedTagSpec::getTagSpecName($tagspec), $uri_scheme], $tagspec->spec_url, $result, '', '', $line_delta);
+            array(ParsedTagSpec::getTagSpecName($tagspec), $uri_scheme], $tagspec->spec_url, $result, '', '', $line_delta);
     }
 
     /**
@@ -77,6 +77,6 @@ class ParsedUrlSpecStyleSheetErrorAdapter
     public function disallowedRelativeUrl(Context $context, $url, TagSpec $tagspec, $result, $line_delta = 0)
     {
         $context->addError(ValidationErrorCode::CSS_SYNTAX_DISALLOWED_RELATIVE_URL,
-            [ParsedTagSpec::getTagSpecName($tagspec), $url], $tagspec->spec_url, $result, '', '', $line_delta);
+            array(ParsedTagSpec::getTagSpecName($tagspec), $url], $tagspec->spec_url, $result, '', '', $line_delta);
     }
 }

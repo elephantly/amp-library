@@ -33,7 +33,7 @@ class ParsedUrlSpec
 {
     /** @var UrlSpec|null */
     protected $spec = null;
-    protected $allowed_protocols = []; // Treat as set
+    protected $allowed_protocols = array(); // Treat as set
 
     /**
      * ParsedUrlSpec constructor.

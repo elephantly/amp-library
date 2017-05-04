@@ -97,7 +97,7 @@ class ObjectVideoTagTransformPass extends BasePass
      */
     protected function getVideoUrl(DOMQuery $el)
     {
-        $matches = [];
+        $matches = array();
         $video_url = '';
         $params = $el->find('param');
 

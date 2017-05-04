@@ -104,7 +104,7 @@ class ObjectVimeoTagTransformPass extends BasePass
      */
     protected function getVimeoCode(DOMQuery $el)
     {
-        $matches = [];
+        $matches = array();
         $vimeo_code = '';
         $params = $el->find('param');
 

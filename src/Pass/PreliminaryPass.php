@@ -38,7 +38,7 @@ class PreliminaryPass extends BasePass
             try {
                 $tags = $query->find($remove_this);
             } catch (Exception $e) {
-                $this->context->addError("BAD_CSS_SELECTOR_FOR_USER_SUBMITTED_TAG_BLACKLIST '$remove_this'", [],
+                $this->context->addError("BAD_CSS_SELECTOR_FOR_USER_SUBMITTED_TAG_BLACKLIST '$remove_this'", array(],
                     '', $this->validation_result);
                 continue;
             }
@@ -64,9 +64,9 @@ class PreliminaryPass extends BasePass
      */
     protected function getRemovalSelectors()
     {
-        $remove_these = [];
+        $remove_these = array();
         if (isset($this->options['remove_selectors'])) {
-            $remove_these = $this->options['remove_selectors'];
+            $remove_these = $this->options['remove_selectors');
         }
 
         $matching_functions = $this->getMatchingFunctions();
@@ -83,8 +83,8 @@ class PreliminaryPass extends BasePass
     protected function getMatchingFunctions()
     {
         $functions = get_defined_functions();
-        $user_functions = $functions['user'];
-        $matching_functions = [];
+        $user_functions = $functions['user');
+        $matching_functions = array();
         foreach ($user_functions as $user_function) {
             if (stripos($user_function, 'lullabot_amp_remove_selectors') !== false) {
                 $matching_functions[] = $user_function;

@@ -47,22 +47,22 @@ class AmpImgFixPass extends ImgTagTransformPass
     {
         /** @var SValidationError $error */
         foreach ($this->validation_result->errors as $error) {
-            if (in_array($error->code, [ValidationErrorCode::INCONSISTENT_UNITS_FOR_WIDTH_AND_HEIGHT, ValidationErrorCode::MANDATORY_ATTR_MISSING, ValidationErrorCode::INVALID_ATTR_VALUE, ValidationErrorCode::IMPLIED_LAYOUT_INVALID, ValidationErrorCode::SPECIFIED_LAYOUT_INVALID]) &&
+            if (in_array($error->code, array(ValidationErrorCode::INCONSISTENT_UNITS_FOR_WIDTH_AND_HEIGHT, ValidationErrorCode::MANDATORY_ATTR_MISSING, ValidationErrorCode::INVALID_ATTR_VALUE, ValidationErrorCode::IMPLIED_LAYOUT_INVALID, ValidationErrorCode::SPECIFIED_LAYOUT_INVALID]) &&
                 !$error->resolved &&
                 !empty($error->dom_tag) &&
                 strtolower($error->dom_tag->tagName) == 'amp-img'
             ) {
                 $amp_img_el = new DOMQuery($error->dom_tag);
 
-                if (in_array($error->code, [ValidationErrorCode::IMPLIED_LAYOUT_INVALID, ValidationErrorCode::SPECIFIED_LAYOUT_INVALID])) {
+                if (in_array($error->code, array(ValidationErrorCode::IMPLIED_LAYOUT_INVALID, ValidationErrorCode::SPECIFIED_LAYOUT_INVALID])) {
                     $amp_img_el->attr('layout', 'responsive');
                     $error->addActionTaken(new ActionTakenLine('amp-img', ActionTakenType::AMP_IMG_FIX_RESPONSIVE));
                     $error->resolved = true;
                 }
 
                 $layout = ParsedTagSpec::parseLayout($amp_img_el->attr('layout'));
-                if (in_array($error->code, [ValidationErrorCode::INCONSISTENT_UNITS_FOR_WIDTH_AND_HEIGHT, ValidationErrorCode::MANDATORY_ATTR_MISSING, ValidationErrorCode::INVALID_ATTR_VALUE]) &&
-                    ($layout !== AmpLayoutLayout::RESPONSIVE || !in_array($error->params[0], ['height', 'width', 'amp-img']))
+                if (in_array($error->code, array(ValidationErrorCode::INCONSISTENT_UNITS_FOR_WIDTH_AND_HEIGHT, ValidationErrorCode::MANDATORY_ATTR_MISSING, ValidationErrorCode::INVALID_ATTR_VALUE]) &&
+                    ($layout !== AmpLayoutLayout::RESPONSIVE || !in_array($error->params[0], array('height', 'width', 'amp-img']))
                 ) {
                     continue;
                 }
@@ -75,7 +75,7 @@ class AmpImgFixPass extends ImgTagTransformPass
                     $error->resolved = false;
                 }
             }
-            elseif (in_array($error->code, [ValidationErrorCode::MANDATORY_TAG_ANCESTOR_WITH_HINT]) &&
+            elseif (in_array($error->code, array(ValidationErrorCode::MANDATORY_TAG_ANCESTOR_WITH_HINT]) &&
                 !$error->resolved &&
                 !empty($error->dom_tag) &&
                 strtolower($error->dom_tag->tagName) == 'img' &&

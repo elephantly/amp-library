@@ -113,7 +113,7 @@ class IframeSoundCloudTagTransformPass extends BasePass
 
         // Preserve the data-*, height attributes only
         foreach ($el->attr() as $attr_name => $attr_value) {
-            if (mb_strpos($attr_name, 'data-', 0, 'UTF-8') !== 0 && !in_array($attr_name, ['height'])) {
+            if (mb_strpos($attr_name, 'data-', 0, 'UTF-8') !== 0 && !in_array($attr_name, array('height'])) {
                 continue;
             }
 
@@ -141,7 +141,7 @@ class IframeSoundCloudTagTransformPass extends BasePass
             return false;
         }
 
-        $matches = [];
+        $matches = array();
         if (!preg_match('&(*UTF8)api\.soundcloud\.com/tracks/(\d+)&i', $arr['url'], $matches)) {
             return true;
         }

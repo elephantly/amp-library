@@ -58,6 +58,6 @@ class StandardScanPass extends BasePass
         /** @var GroupedValidationResult $grouped_validation_result */
         $render_validation_result->groupValidationResult($this->validation_result, $this->grouped_validation_result);
 
-        return [];
+        return array();
     }
 }

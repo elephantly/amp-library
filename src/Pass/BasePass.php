@@ -33,13 +33,13 @@ abstract class BasePass
     /** @var DOMQuery */
     protected $q;
     /** @var ActionTakenLine[] */
-    protected $transformations = [];
+    protected $transformations = array();
     /** @var  ParsedValidatorRules */
     protected $parsed_rules;
     /** @var array */
     protected $options;
     /** @var array */
-    protected $component_js = [];
+    protected $component_js = array();
     /** @var Context */
     protected $context;
     /** @var SValidationResult */
@@ -55,7 +55,7 @@ abstract class BasePass
      * @param ParsedValidatorRules $parsed_rules
      * @param array $options
      */
-    function __construct(DOMQuery $q, Context $context, SValidationResult $validation_result, GroupedValidationResult $grouped_validation_result, ParsedValidatorRules $parsed_rules, $options = [])
+    function __construct(DOMQuery $q, Context $context, SValidationResult $validation_result, GroupedValidationResult $grouped_validation_result, ParsedValidatorRules $parsed_rules, $options = array())
     {
         $this->q = $q;
         $this->parsed_rules = $parsed_rules;
@@ -226,7 +226,7 @@ abstract class BasePass
             return false;
         }
 
-        $matches = [];
+        $matches = array();
         if (preg_match($regex, $href, $matches)) {
             if (!empty($matches[1])) {
                 return $matches[1];
@@ -249,10 +249,10 @@ abstract class BasePass
 
         $query = ParseUrl::parse_url($href, PHP_URL_QUERY);
         if ($query === null) {
-            return [];
+            return array();
         }
 
-        $arr = [];
+        $arr = array();
         parse_str($query, $arr);
 
         return $arr;

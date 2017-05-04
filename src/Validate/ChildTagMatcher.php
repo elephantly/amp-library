@@ -74,7 +74,7 @@ class ChildTagMatcher
         if (!empty($first_name_oneof) && !in_array($child_tag_names[0], $first_name_oneof)) {
             $allowed_names = '[' . join(',', $first_name_oneof) . ']';
             $context->addError(ValidationErrorCode::DISALLOWED_FIRST_CHILD_TAG_NAME,
-                [$child_tag_names[0], $this->parent_spec->tag_name, $allowed_names], $this->parent_spec->spec_url, $validation_result);
+                array($child_tag_names[0], $this->parent_spec->tag_name, $allowed_names], $this->parent_spec->spec_url, $validation_result);
         }
 
         /** @var string[]|null $child_tag_name_oneof */
@@ -84,7 +84,7 @@ class ChildTagMatcher
                 if (!in_array($child_tag_name, $child_tag_name_oneof)) {
                     $allowed_names = '[' . join(',', $child_tag_name_oneof) . ']';
                     $context->addError(ValidationErrorCode::DISALLOWED_CHILD_TAG_NAME,
-                        [$child_tag_name, $this->parent_spec->tag_name, $allowed_names], $this->parent_spec->spec_url, $validation_result);
+                        array($child_tag_name, $this->parent_spec->tag_name, $allowed_names], $this->parent_spec->spec_url, $validation_result);
                 }
             }
         }
@@ -93,7 +93,7 @@ class ChildTagMatcher
         $mandatory_num_child_tags = $child_tag_spec->mandatory_num_child_tags;
         if (is_numeric($mandatory_num_child_tags) && $num_child_tags !== $mandatory_num_child_tags) {
             $context->addError(ValidationErrorCode::INCORRECT_NUM_CHILD_TAGS,
-                [$this->parent_spec->tag_name, $mandatory_num_child_tags, $num_child_tags], $this->parent_spec->spec_url, $validation_result);
+                array($this->parent_spec->tag_name, $mandatory_num_child_tags, $num_child_tags], $this->parent_spec->spec_url, $validation_result);
         }
     }
 }

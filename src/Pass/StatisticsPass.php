@@ -29,7 +29,7 @@ class StatisticsPass extends BasePass
 
         // If we don't want statistics or couldn't find tag exit
         if (empty($this->options['add_stats_html_comment']) || empty($html_tag->count())) {
-            return [];
+            return array();
         }
 
         /** @var \DOMElement $html_tag_dom_el */
@@ -43,7 +43,7 @@ class StatisticsPass extends BasePass
         $comment_end = "#AMP-END-PLACEHOLDER-$start_time#";
         $this->addComment($comment_end, $html_tag_dom_el);
 
-        return [];
+        return array();
     }
 
     /**

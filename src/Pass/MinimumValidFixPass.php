@@ -36,49 +36,49 @@ use Lullabot\AMP\AMP;
  * Minimum fixes for:
  * GLOBAL WARNING
  * - The mandatory tag 'head' is missing or incorrect.
- * [code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://www.ampproject.org/docs/reference/spec.html#required-markup]
+ * array(code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://www.ampproject.org/docs/reference/spec.html#required-markup]
  * - The mandatory tag 'link rel=canonical' is missing or incorrect.
- * [code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://www.ampproject.org/docs/reference/spec.html#required-markup]
+ * array(code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://www.ampproject.org/docs/reference/spec.html#required-markup]
  * - The mandatory tag 'meta charset=utf-8' is missing or incorrect.
- * [code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://www.ampproject.org/docs/reference/spec.html#required-markup]
+ * array(code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://www.ampproject.org/docs/reference/spec.html#required-markup]
  * - The mandatory tag 'meta name=viewport' is missing or incorrect.
- * [code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://www.ampproject.org/docs/reference/spec.html#required-markup]
+ * array(code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://www.ampproject.org/docs/reference/spec.html#required-markup]
  * - The mandatory tag 'body' is missing or incorrect.
- * [code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://www.ampproject.org/docs/reference/spec.html#required-markup]
+ * array(code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://www.ampproject.org/docs/reference/spec.html#required-markup]
  * - The mandatory tag 'amphtml engine v0.js script' is missing or incorrect.
- * [code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://www.ampproject.org/docs/reference/spec.html#required-markup]
+ * array(code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://www.ampproject.org/docs/reference/spec.html#required-markup]
  * - The mandatory tag 'noscript enclosure for boilerplate' is missing or incorrect.
- * [code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://github.com/ampproject/amphtml/blob/master/spec/amp-boilerplate.md]
+ * array(code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://github.com/ampproject/amphtml/blob/master/spec/amp-boilerplate.md]
  * - The mandatory tag 'head > style[amp-boilerplate]' is missing or incorrect.
- * [code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://github.com/ampproject/amphtml/blob/master/spec/amp-boilerplate.md]
+ * array(code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://github.com/ampproject/amphtml/blob/master/spec/amp-boilerplate.md]
  * - The mandatory tag 'noscript > style[amp-boilerplate]' is missing or incorrect.
- * [code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://github.com/ampproject/amphtml/blob/master/spec/amp-boilerplate.md]
+ * array(code: MANDATORY_TAG_MISSING  category: MANDATORY_AMP_TAG_MISSING_OR_INCORRECT see: https://github.com/ampproject/amphtml/blob/master/spec/amp-boilerplate.md]
  */
 class MinimumValidFixPass extends BasePass
 {
     // These are the outer, important components
-    protected $components = [
-        'head' => ['html', 'head'],
-        'body' => ['html', 'body'],
-        'noscript' => ['html > head', 'noscript enclosure for boilerplate']
-    ];
+    protected $components = array(
+        'head' => array('html', 'head'],
+        'body' => array('html', 'body'],
+        'noscript' => array('html > head', 'noscript enclosure for boilerplate']
+    );
 
     // Components in head
-    protected $head_components = [
-        'meta charset=utf-8' => ['html > head', '<meta charset="utf-8"></meta>'],
-        'meta name=viewport' => ['html > head', '<meta name="viewport" content="width=device-width,minimum-scale=1"></meta>'],
-        'noscript > style[amp-boilerplate] - old variant' => ['html > head > noscript', '<style>body {opacity: 1}</style>'],
-        'noscript > style[amp-boilerplate]' => ['html > head > noscript', '<style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style>'],
-        'amphtml engine v0.js script' => ['html > head', '<script async="" src="https://cdn.ampproject.org/v0.js"></script>'],
-        'head > style[amp-boilerplate]' => ['html > head', '<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>'],
-        'head > style[amp-boilerplate] - old variant' => ['html > head', '<style>body {opacity: 0}</style>']
-    ];
+    protected $head_components = array(
+        'meta charset=utf-8' => array('html > head', '<meta charset="utf-8"></meta>'],
+        'meta name=viewport' => array('html > head', '<meta name="viewport" content="width=device-width,minimum-scale=1"></meta>'],
+        'noscript > style[amp-boilerplate] - old variant' => array('html > head > noscript', '<style>body {opacity: 1}</style>'],
+        'noscript > style[amp-boilerplate]' => array('html > head > noscript', '<style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style>'],
+        'amphtml engine v0.js script' => array('html > head', '<script async="" src="https://cdn.ampproject.org/v0.js"></script>'],
+        'head > style[amp-boilerplate]' => array('html > head', '<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>'],
+        'head > style[amp-boilerplate] - old variant' => array('html > head', '<style>body {opacity: 0}</style>']
+    );
 
     public function pass()
     {
         // Only run this pass if we have some errors that we can try to fix
         if ($this->noFixableGlobalErrors()) {
-            return [];
+            return array();
         }
 
         // Add <head>, <body>, <noscript> tags if necessary
@@ -121,7 +121,7 @@ class MinimumValidFixPass extends BasePass
 
         // Allow the canonical path to be inserted, if available
         if (isset($this->options['canonical_path'])) {
-            $this->head_components['link rel=canonical'] = ['html > head', "<link rel='canonical' href='{$this->options['canonical_path']}'></link>"];
+            $this->head_components['link rel=canonical'] = array('html > head', "<link rel='canonical' href='{$this->options['canonical_path']}'></link>");
         }
 
         // Now go ahead and create any head components
@@ -158,7 +158,7 @@ class MinimumValidFixPass extends BasePass
             }
         }
 
-        return [];
+        return array();
     }
 
     /**
@@ -192,7 +192,7 @@ class MinimumValidFixPass extends BasePass
             }
         }
 
-        return [];
+        return array();
     }
 
     /**
@@ -225,7 +225,7 @@ class MinimumValidFixPass extends BasePass
         /** @var SValidationError $error */
         foreach ($this->validation_result->errors as $error) {
             if ($error->context_string == AMP::AMP_GLOBAL_WARNING &&
-                in_array($error->code, [ValidationErrorCode::MANDATORY_TAG_MISSING, ValidationErrorCode::TAG_REQUIRED_BY_MISSING]) &&
+                in_array($error->code, array(ValidationErrorCode::MANDATORY_TAG_MISSING, ValidationErrorCode::TAG_REQUIRED_BY_MISSING]) &&
                 !empty($error->params[0])
             ) {
                 return false;
@@ -264,7 +264,7 @@ class MinimumValidFixPass extends BasePass
     protected function skipError(SValidationError $error, $tagname)
     {
         if ($error->phase !== Phase::GLOBAL_PHASE ||
-            !in_array($error->code, [ValidationErrorCode::MANDATORY_TAG_MISSING, ValidationErrorCode::TAG_REQUIRED_BY_MISSING]) ||
+            !in_array($error->code, array(ValidationErrorCode::MANDATORY_TAG_MISSING, ValidationErrorCode::TAG_REQUIRED_BY_MISSING]) ||
             empty($error->params[0]) ||
             $error->params[0] !== $tagname
         ) {

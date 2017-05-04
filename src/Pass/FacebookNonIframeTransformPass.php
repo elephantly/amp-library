@@ -136,11 +136,11 @@ class FacebookNonIframeTransformPass extends BaseFacebookPass
             $height = $card ? self::DEFAULT_HEIGHT_WITH_CARD : self::DEFAULT_HEIGHT;
         }
 
-        return [
+        return array(
             'data-href' => $src,
             'data-embed-as' => $embed_as,
             'height' => $height,
             'width' => $width
-        ];
+        );
     }
 }

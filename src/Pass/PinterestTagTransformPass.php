@@ -80,14 +80,14 @@ class PinterestTagTransformPass extends BasePass
      */
     protected function setPinterestDimensionsFrom(DOMQuery $el, DOMQuery $new_el)
     {
-        $dimensions = [
-            'medium' => ['width' => '345', 'height' => '426'],
-            'large' => ['width' => '562', 'height' => '627'],
-            'small' => ['width' => '236', 'height' => '345']
-        ];
+        $dimensions = array(
+            'medium' => array('width' => '345', 'height' => '426'],
+            'large' => array('width' => '562', 'height' => '627'],
+            'small' => array('width' => '236', 'height' => '345']
+        );
 
         $pin_width = trim($el->attr('data-pin-width'));
-        if (!in_array($pin_width, ['small', 'medium', 'large'])) {
+        if (!in_array($pin_width, array('small', 'medium', 'large'])) {
             $pin_width = 'small';
         }
 

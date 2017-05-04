@@ -90,8 +90,8 @@ class InstagramTransformPass extends BasePass
 
         $client = new Client();
         try {
-            $res = $client->get('https://api.instagram.com/oembed/', [
-                'query' => ['url' => $url]
+            $res = $client->get('https://api.instagram.com/oembed/', array(
+                'query' => array('url' => $url]
             ]);
         } catch (HttpException $e) {
             return $e->getMessage() . PHP_EOL . 'Could not make request to instagram oembed endpoint. Setting default height and width';
@@ -129,7 +129,7 @@ class InstagramTransformPass extends BasePass
         // Get the shortcode from the first <a> tag that matches regex and exit
         foreach ($links as $link) {
             $href = $link->attr('href');
-            $matches = [];
+            $matches = array();
             if (preg_match('&(*UTF8)instagram.com/p/([^/]+)/?&i', $href, $matches)) {
                 if (!empty($matches[1])) {
                     $shortcode = $matches[1];
@@ -139,6 +139,6 @@ class InstagramTransformPass extends BasePass
             }
         }
 
-        return [$shortcode, $url];
+        return array($shortcode, $url);
     }
 }
