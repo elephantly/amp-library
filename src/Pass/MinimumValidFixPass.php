@@ -58,20 +58,20 @@ class MinimumValidFixPass extends BasePass
 {
     // These are the outer, important components
     protected $components = array(
-        'head' => array('html', 'head'],
-        'body' => array('html', 'body'],
-        'noscript' => array('html > head', 'noscript enclosure for boilerplate']
+        'head' => array('html', 'head'),
+        'body' => array('html', 'body'),
+        'noscript' => array('html > head', 'noscript enclosure for boilerplate')
     );
 
     // Components in head
     protected $head_components = array(
-        'meta charset=utf-8' => array('html > head', '<meta charset="utf-8"></meta>'],
-        'meta name=viewport' => array('html > head', '<meta name="viewport" content="width=device-width,minimum-scale=1"></meta>'],
-        'noscript > style[amp-boilerplate] - old variant' => array('html > head > noscript', '<style>body {opacity: 1}</style>'],
-        'noscript > style[amp-boilerplate]' => array('html > head > noscript', '<style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style>'],
-        'amphtml engine v0.js script' => array('html > head', '<script async="" src="https://cdn.ampproject.org/v0.js"></script>'],
-        'head > style[amp-boilerplate]' => array('html > head', '<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>'],
-        'head > style[amp-boilerplate] - old variant' => array('html > head', '<style>body {opacity: 0}</style>']
+        'meta charset=utf-8' => array('html > head', '<meta charset="utf-8"></meta>'),
+        'meta name=viewport' => array('html > head', '<meta name="viewport" content="width=device-width,minimum-scale=1"></meta>'),
+        'noscript > style[amp-boilerplate] - old variant' => array('html > head > noscript', '<style>body {opacity: 1}</style>'),
+        'noscript > style[amp-boilerplate]' => array('html > head > noscript', '<style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style>'),
+        'amphtml engine v0.js script' => array('html > head', '<script async="" src="https://cdn.ampproject.org/v0.js"></script>'),
+        'head > style[amp-boilerplate]' => array('html > head', '<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>'),
+        'head > style[amp-boilerplate] - old variant' => array('html > head', '<style>body {opacity: 0}</style>')
     );
 
     public function pass()

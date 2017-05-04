@@ -108,7 +108,7 @@ class Context
      * @param array $options
      * @param int $max_errors
      */
-    public function __construct($scope = Scope::BODY_SCOPE, $options = array(], $max_errors = -1)
+    public function __construct($scope = Scope::BODY_SCOPE, $options = array(), $max_errors = -1)
     {
         $this->tagspecs_validated = new \SplObjectStorage();
         $this->max_errors = $max_errors;

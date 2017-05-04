@@ -38,7 +38,7 @@ class PreliminaryPass extends BasePass
             try {
                 $tags = $query->find($remove_this);
             } catch (Exception $e) {
-                $this->context->addError("BAD_CSS_SELECTOR_FOR_USER_SUBMITTED_TAG_BLACKLIST '$remove_this'", array(],
+                $this->context->addError("BAD_CSS_SELECTOR_FOR_USER_SUBMITTED_TAG_BLACKLIST '$remove_this'", array(),
                     '', $this->validation_result);
                 continue;
             }

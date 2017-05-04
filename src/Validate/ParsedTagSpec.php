@@ -171,7 +171,7 @@ class ParsedTagSpec
         if (!empty($this->spec->mandatory_parent)) {
             if ($context->getParentTagName() !== $this->spec->mandatory_parent) {
                 $context->addError(ValidationErrorCode::WRONG_PARENT_TAG,
-                    array($this->spec->tag_name, $context->getParentTagName(), $this->getSpec()->mandatory_parent],
+                    array($this->spec->tag_name, $context->getParentTagName(), $this->getSpec()->mandatory_parent),
                     $this->spec->spec_url, $validation_result);
             }
         }
@@ -188,11 +188,11 @@ class ParsedTagSpec
             if (false === array_search($mandatory_ancestor, $context->getAncestorTagNames())) {
                 if (!empty($this->spec->mandatory_ancestor_suggested_alternative)) {
                     $context->addError(ValidationErrorCode::MANDATORY_TAG_ANCESTOR_WITH_HINT,
-                        array($this->spec->tag_name, $mandatory_ancestor, $this->spec->mandatory_ancestor_suggested_alternative],
+                        array($this->spec->tag_name, $mandatory_ancestor, $this->spec->mandatory_ancestor_suggested_alternative),
                         $this->spec->spec_url, $validation_result);
                 } else {
                     $context->addError(ValidationErrorCode::MANDATORY_TAG_ANCESTOR,
-                        array($this->spec->tag_name, $mandatory_ancestor], $this->spec->spec_url, $validation_result);
+                        array($this->spec->tag_name, $mandatory_ancestor), $this->spec->spec_url, $validation_result);
                 }
                 return;
             }
@@ -202,7 +202,7 @@ class ParsedTagSpec
             foreach ($this->spec->disallowed_ancestor as $disallowed_ancestor) {
                 if (false !== array_search($disallowed_ancestor, $context->getAncestorTagNames())) {
                     $context->addError(ValidationErrorCode::DISALLOWED_TAG_ANCESTOR,
-                        array($this->spec->tag_name, $disallowed_ancestor], $this->spec->spec_url, $validation_result);
+                        array($this->spec->tag_name, $disallowed_ancestor), $this->spec->spec_url, $validation_result);
                     return;
                 }
             }
@@ -229,7 +229,7 @@ class ParsedTagSpec
         }
 
         $context->addError(ValidationErrorCode::DISALLOWED_ATTR,
-            array($attr_name, self::getTagSpecName($this->spec)],
+            array($attr_name, self::getTagSpecName($this->spec)),
             $this->spec->spec_url, $validation_result, $attr_name);
 
         return false;
@@ -247,13 +247,13 @@ class ParsedTagSpec
         if (self::valueHasUnescapedTemplateSyntax($attr_value)) {
             $context->addError(
                 ValidationErrorCode::UNESCAPED_TEMPLATE_IN_ATTR_VALUE,
-                array($attr_name, self::getTagSpecName($this->spec), $attr_value],
+                array($attr_name, self::getTagSpecName($this->spec), $attr_value),
                 $this->template_spec_url, $result, $attr_name);
             return false;
         } else if (self::valueHasPartialsTemplateSyntax($attr_value)) {
             $context->addError(
                 ValidationErrorCode::TEMPLATE_PARTIAL_IN_ATTR_VALUE,
-                array($attr_name, self::getTagSpecName($this->spec), $attr_value],
+                array($attr_name, self::getTagSpecName($this->spec), $attr_value),
                 $this->template_spec_url, $result, $attr_name);
             return false;
         }
@@ -318,7 +318,7 @@ class ParsedTagSpec
             $attr_spec = $parsed_attr_spec->getSpec();
             if (!empty($attr_spec->deprecation)) {
                 $context->addError(ValidationErrorCode::DEPRECATED_ATTR,
-                    array($encountered_attr_name, self::getTagSpecName($this->spec), $attr_spec->deprecation],
+                    array($encountered_attr_name, self::getTagSpecName($this->spec), $attr_spec->deprecation),
                     $attr_spec->deprecation_url, $result_for_attempt, $encountered_attr_name);
                 // Don't exit as its not a fatal error
             }
@@ -336,7 +336,7 @@ class ParsedTagSpec
                 // If it matches its an error
                 if (preg_match($blacklisted_value_regex, $encountered_attr_value)) {
                     $context->addError(ValidationErrorCode::INVALID_ATTR_VALUE,
-                        array($encountered_attr_name, self::getTagSpecName($this->spec), $encountered_attr_value],
+                        array($encountered_attr_name, self::getTagSpecName($this->spec), $encountered_attr_value),
                         $this->spec->spec_url, $result_for_attempt, $encountered_attr_name);
                     $should_not_check = true;
                     continue;
@@ -350,7 +350,7 @@ class ParsedTagSpec
             // if the mandatory oneofs had already been seen, its an error
             if ($attr_spec->mandatory_oneof && isset($mandatory_oneofs_seen[$attr_spec->mandatory_oneof])) {
                 $context->addError(ValidationErrorCode::MUTUALLY_EXCLUSIVE_ATTRS,
-                    array(self::getTagSpecName($this->spec), $attr_spec->mandatory_oneof],
+                    array(self::getTagSpecName($this->spec), $attr_spec->mandatory_oneof),
                     $this->spec->spec_url, $result_for_attempt, $attr_spec->name);
                 $should_not_check = true;
                 continue;
@@ -390,7 +390,7 @@ class ParsedTagSpec
         foreach ($this->mandatory_oneofs as $mandatory_oneof) {
             if (!isset($mandatory_oneofs_seen[$mandatory_oneof])) {
                 $context->addError(ValidationErrorCode::MANDATORY_ONEOF_ATTR_MISSING,
-                    array(self::getTagSpecName($this->spec), $mandatory_oneof],
+                    array(self::getTagSpecName($this->spec), $mandatory_oneof),
                     $this->spec->spec_url, $result_for_attempt); // Can't provide an attribute name here
             }
         }
@@ -399,7 +399,7 @@ class ParsedTagSpec
         foreach ($this->mandatory_attrs as $mandatory_attr) {
             if (!$mandatory_attrs_seen->contains($mandatory_attr)) {
                 $context->addError(ValidationErrorCode::MANDATORY_ATTR_MISSING,
-                    array($mandatory_attr->getSpec()->name, self::getTagSpecName($this->spec)],
+                    array($mandatory_attr->getSpec()->name, self::getTagSpecName($this->spec)),
                     $this->spec->spec_url, $result_for_attempt, $mandatory_attr->getSpec()->name);
             }
         }
@@ -414,7 +414,7 @@ class ParsedTagSpec
                 }
                 if (!$parsed_attr_specs_validated->contains($parsed_attr_spec)) {
                     $context->addError(ValidationErrorCode::ATTR_REQUIRED_BUT_MISSING,
-                        array($parsed_attr_spec->getSpec()->name, self::getTagSpecName($this->spec), $parsed_trigger_spec->getAttrName()],
+                        array($parsed_attr_spec->getSpec()->name, self::getTagSpecName($this->spec), $parsed_trigger_spec->getAttrName()),
                         $this->spec->spec_url, $result_for_attempt, $parsed_attr_spec->getSpec()->name);
                 }
             }
@@ -643,21 +643,21 @@ class ParsedTagSpec
         $input_layout = self::parseLayout($layout_attr);
         if (!empty($layout_attr) && $input_layout === AmpLayoutLayout::UNKNOWN) {
             $context->addError(ValidationErrorCode::INVALID_ATTR_VALUE,
-                array('layout', self::getTagSpecName($this->spec), $layout_attr], $this->spec->spec_url, $result, 'layout');
+                array('layout', self::getTagSpecName($this->spec), $layout_attr), $this->spec->spec_url, $result, 'layout');
             return;
         }
 
         $input_width = new CssLengthAndUnit($width_attr, true);
         if (!$input_width->is_valid) {
             $context->addError(ValidationErrorCode::INVALID_ATTR_VALUE,
-                array('width', self::getTagSpecName($this->spec), $width_attr], $this->spec->spec_url, $result, 'width');
+                array('width', self::getTagSpecName($this->spec), $width_attr), $this->spec->spec_url, $result, 'width');
             return;
         }
 
         $input_height = new CssLengthAndUnit($height_attr, true);
         if (!$input_height->is_valid) {
             $context->addError(ValidationErrorCode::INVALID_ATTR_VALUE,
-                array('height', self::getTagSpecName($this->spec), $height_attr], $this->spec->spec_url, $result, 'height');
+                array('height', self::getTagSpecName($this->spec), $height_attr), $this->spec->spec_url, $result, 'height');
             return;
         }
 
@@ -667,7 +667,7 @@ class ParsedTagSpec
 
         if ($height->is_auto && $layout !== AmpLayoutLayout::FLEX_ITEM) {
             $context->addError(ValidationErrorCode::INVALID_ATTR_VALUE,
-                array('height', self::getTagSpecName($this->spec), $height_attr], $this->spec->spec_url, $result, 'height');
+                array('height', self::getTagSpecName($this->spec), $height_attr), $this->spec->spec_url, $result, 'height');
             return;
         }
 
@@ -675,7 +675,7 @@ class ParsedTagSpec
             $code = empty($layout_attr) ? ValidationErrorCode::IMPLIED_LAYOUT_INVALID :
                 ValidationErrorCode::SPECIFIED_LAYOUT_INVALID;
             $context->addError($code,
-                array($layout, self::getTagSpecName($this->spec)], $this->spec->spec_url, $result, empty($layout_attr) ? '' : 'layout');
+                array($layout, self::getTagSpecName($this->spec)), $this->spec->spec_url, $result, empty($layout_attr) ? '' : 'layout');
             return;
         }
 
@@ -683,14 +683,14 @@ class ParsedTagSpec
             && !$height->is_set
         ) {
             $context->addError(ValidationErrorCode::MANDATORY_ATTR_MISSING,
-                array('height', self::getTagSpecName($this->spec)],
+                array('height', self::getTagSpecName($this->spec)),
                 $this->spec->spec_url, $result);
             return;
         }
 
         if ($layout === AmpLayoutLayout::FIXED_HEIGHT && $width->is_set && !$width->is_auto) {
             $context->addError(ValidationErrorCode::ATTR_VALUE_REQUIRED_BY_LAYOUT,
-                array($width_attr, 'width', self::getTagSpecName($this->spec), 'FIXED_HEIGHT', 'auto'],
+                array($width_attr, 'width', self::getTagSpecName($this->spec), 'FIXED_HEIGHT', 'auto'),
                 $this->spec->spec_url, $result);
             return;
         }
@@ -698,18 +698,18 @@ class ParsedTagSpec
         if (in_array($layout, array(AmpLayoutLayout::FIXED, AmpLayoutLayout::RESPONSIVE])) {
             if (!$width->is_set) {
                 $context->addError(ValidationErrorCode::MANDATORY_ATTR_MISSING,
-                    array('width', self::getTagSpecName($this->spec)], $this->spec->spec_url, $result);
+                    array('width', self::getTagSpecName($this->spec)), $this->spec->spec_url, $result);
                 return;
             } else if ($width->is_auto) {
                 $context->addError(ValidationErrorCode::INVALID_ATTR_VALUE,
-                    array('width', self::getTagSpecName($this->spec), 'auto'], $this->spec->spec_url, $result, 'width');
+                    array('width', self::getTagSpecName($this->spec), 'auto'), $this->spec->spec_url, $result, 'width');
                 return;
             }
         }
 
         if ($layout === AmpLayoutLayout::RESPONSIVE && $width->unit !== $height->unit) {
             $context->addError(ValidationErrorCode::INCONSISTENT_UNITS_FOR_WIDTH_AND_HEIGHT,
-                array(self::getTagSpecName($this->spec), $width->unit, $height->unit], $this->spec->spec_url, $result);
+                array(self::getTagSpecName($this->spec), $width->unit, $height->unit), $this->spec->spec_url, $result);
             return;
         }
 
@@ -717,7 +717,7 @@ class ParsedTagSpec
             $code = empty($layout_attr) ? ValidationErrorCode::ATTR_DISALLOWED_BY_IMPLIED_LAYOUT :
                 ValidationErrorCode::ATTR_DISALLOWED_BY_SPECIFIED_LAYOUT;
             $context->addError($code,
-                array('heights', self::getTagSpecName($this->spec), $layout], $this->spec->spec_url, $result, 'heights');
+                array('heights', self::getTagSpecName($this->spec), $layout), $this->spec->spec_url, $result, 'heights');
             return;
         }
     }

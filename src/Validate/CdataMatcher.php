@@ -69,7 +69,7 @@ class CdataMatcher
             $num_bytes = strlen($cdata);
             if ($num_bytes > $max_bytes) {
                 $context->addError(ValidationErrorCode::STYLESHEET_TOO_LONG,
-                    array(ParsedTagSpec::getTagSpecName($this->tag_spec), $num_bytes, $max_bytes], $cdata_spec->max_bytes_spec_url, $result);
+                    array(ParsedTagSpec::getTagSpecName($this->tag_spec), $num_bytes, $max_bytes), $cdata_spec->max_bytes_spec_url, $result);
                 return;
             }
         }
@@ -77,14 +77,14 @@ class CdataMatcher
         if (!empty($cdata_spec->mandatory_cdata)) {
             if ($cdata !== $cdata_spec->mandatory_cdata) {
                 $context->addError(ValidationErrorCode::MANDATORY_CDATA_MISSING_OR_INCORRECT,
-                    array(ParsedTagSpec::getTagSpecName($this->tag_spec)], $this->tag_spec->spec_url, $result);
+                    array(ParsedTagSpec::getTagSpecName($this->tag_spec)), $this->tag_spec->spec_url, $result);
             }
             return;
         } else if (!empty($cdata_spec->cdata_regex)) {
             $regex = '&(*UTF8)^(' . $cdata_spec->cdata_regex . ')$&';
             if (!preg_match($regex, $cdata)) {
                 $context->addError(ValidationErrorCode::MANDATORY_CDATA_MISSING_OR_INCORRECT,
-                    array(ParsedTagSpec::getTagSpecName($this->tag_spec)], $this->tag_spec->spec_url, $result);
+                    array(ParsedTagSpec::getTagSpecName($this->tag_spec)), $this->tag_spec->spec_url, $result);
                 return;
             }
         } else if (!empty($cdata_spec->css_spec)) {
@@ -92,7 +92,7 @@ class CdataMatcher
                 $this->validateCssSpec($cdata, $context, $result, $cdata_spec);
             } catch (\Exception $e) {
                 $context->addError(ValidationErrorCode::CSS_SYNTAX,
-                    array(ParsedTagSpec::getTagSpecName($this->tag_spec), 'CSS Parser Error: ' . $e->getMessage()], $this->tag_spec->spec_url, $result);
+                    array(ParsedTagSpec::getTagSpecName($this->tag_spec), 'CSS Parser Error: ' . $e->getMessage()), $this->tag_spec->spec_url, $result);
             }
         }
 
@@ -101,7 +101,7 @@ class CdataMatcher
             $blackregex = "&(*UTF8)$blackitem->regex&i";
             if (preg_match($blackregex, $cdata)) {
                 $context->addError(ValidationErrorCode::CDATA_VIOLATES_BLACKLIST,
-                    array(ParsedTagSpec::getTagSpecName($this->tag_spec), $blackitem->error_message], $this->tag_spec->spec_url, $result);
+                    array(ParsedTagSpec::getTagSpecName($this->tag_spec), $blackitem->error_message), $this->tag_spec->spec_url, $result);
             }
         }
     }
@@ -163,7 +163,7 @@ class CdataMatcher
 
                 if ($parse_as == 'PARSE_AS_ERROR') {
                     $context->addError(ValidationErrorCode::CSS_SYNTAX_INVALID_AT_RULE,
-                        array(ParsedTagSpec::getTagSpecName($this->tag_spec), $rule->atRuleName()], $this->tag_spec->spec_url, $result, '', '', $rule->getLineNo());
+                        array(ParsedTagSpec::getTagSpecName($this->tag_spec), $rule->atRuleName()), $this->tag_spec->spec_url, $result, '', '', $rule->getLineNo());
                 }
             }
 
