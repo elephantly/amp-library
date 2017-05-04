@@ -140,7 +140,7 @@ class ParsedTagSpec
         /** @var string $mandatory_parent */
         $mandatory_parent = empty($this->spec->mandatory_parent) ? '' : $this->spec->mandatory_parent;
         $attr_value = $this->dispatch_key_attr_spec->getSpec()->value;
-        if (empty(($attr_value))) {
+        if (empty($attr_value)) {
             $attr_value = '';
         }
         return TagSpecDispatch::makeDispatchKey($attr_name, $attr_value, $mandatory_parent);
