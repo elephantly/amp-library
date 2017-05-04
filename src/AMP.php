@@ -198,7 +198,7 @@ class AMP
         $this->scope = $options['scope'];
 
         // Currently we only support these two scopes
-        if (!in_array($this->scope, array(Scope::HTML_SCOPE, Scope::BODY_SCOPE])) {
+        if (!in_array($this->scope, array(Scope::HTML_SCOPE, Scope::BODY_SCOPE))) {
             throw new \Exception("Invalid or currently unsupported scope $this->scope");
         }
 
