@@ -555,7 +555,7 @@ class ParsedTagSpec
      */
     public static function calculateHeight(AmpLayout $spec, $input_layout, CssLengthAndUnit $input_height)
     {
-        if (in_array($input_layout, array(AmpLayoutLayout::UNKNOWN, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT])
+        if (in_array($input_layout, array(AmpLayoutLayout::UNKNOWN, AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT))
             && !$input_height->is_set && $spec->defines_default_height
         ) {
             return new CssLengthAndUnit('1px', false);
