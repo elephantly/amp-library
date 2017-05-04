@@ -376,15 +376,16 @@ class ParsedValidatorRules
     public function maybeEmitGlobalTagValidationErrors(Context $context, SValidationResult $validation_result, BasePass $base_pass)
     {
         $context->setPhase(Phase::GLOBAL_PHASE);
-        if ($context->getProgress($validation_result)['complete']) {
+        $contextProgress = $context->getProgress($validation_result);
+        if ($contextProgress['complete']) {
             return;
         }
         $this->maybeEmitMandatoryTagValidationErrors($context, $validation_result);
-        if ($context->getProgress($validation_result)['complete']) {
+        if ($contextProgress['complete']) {
             return;
         }
         $this->maybeEmitAlsoRequiresValidationErrors($context, $validation_result, $base_pass);
-        if ($context->getProgress($validation_result)['complete']) {
+        if ($contextProgress['complete']) {
             return;
         }
         $this->maybeEmitMandatoryAlternativesSatisfiedErrors($context, $validation_result);
