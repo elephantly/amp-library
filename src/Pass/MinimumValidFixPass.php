@@ -225,7 +225,7 @@ class MinimumValidFixPass extends BasePass
         /** @var SValidationError $error */
         foreach ($this->validation_result->errors as $error) {
             if ($error->context_string == AMP::AMP_GLOBAL_WARNING &&
-                in_array($error->code, array(ValidationErrorCode::MANDATORY_TAG_MISSING, ValidationErrorCode::TAG_REQUIRED_BY_MISSING]) &&
+                in_array($error->code, array(ValidationErrorCode::MANDATORY_TAG_MISSING, ValidationErrorCode::TAG_REQUIRED_BY_MISSING)) &&
                 !empty($error->params[0])
             ) {
                 return false;
@@ -264,7 +264,7 @@ class MinimumValidFixPass extends BasePass
     protected function skipError(SValidationError $error, $tagname)
     {
         if ($error->phase !== Phase::GLOBAL_PHASE ||
-            !in_array($error->code, array(ValidationErrorCode::MANDATORY_TAG_MISSING, ValidationErrorCode::TAG_REQUIRED_BY_MISSING]) ||
+            !in_array($error->code, array(ValidationErrorCode::MANDATORY_TAG_MISSING, ValidationErrorCode::TAG_REQUIRED_BY_MISSING)) ||
             empty($error->params[0]) ||
             $error->params[0] !== $tagname
         ) {

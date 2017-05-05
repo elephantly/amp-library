@@ -66,7 +66,7 @@ class PreliminaryPass extends BasePass
     {
         $remove_these = array();
         if (isset($this->options['remove_selectors'])) {
-            $remove_these = $this->options['remove_selectors');
+            $remove_these = $this->options['remove_selectors'];
         }
 
         $matching_functions = $this->getMatchingFunctions();
@@ -83,7 +83,7 @@ class PreliminaryPass extends BasePass
     protected function getMatchingFunctions()
     {
         $functions = get_defined_functions();
-        $user_functions = $functions['user');
+        $user_functions = $functions['user'];
         $matching_functions = array();
         foreach ($user_functions as $user_function) {
             if (stripos($user_function, 'lullabot_amp_remove_selectors') !== false) {

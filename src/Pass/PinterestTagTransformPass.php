@@ -87,7 +87,7 @@ class PinterestTagTransformPass extends BasePass
         );
 
         $pin_width = trim($el->attr('data-pin-width'));
-        if (!in_array($pin_width, array('small', 'medium', 'large'])) {
+        if (!in_array($pin_width, array('small', 'medium', 'large'))) {
             $pin_width = 'small';
         }
 

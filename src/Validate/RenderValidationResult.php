@@ -245,7 +245,7 @@ class RenderValidationResult
 
         if ($error->code === ValidationErrorCode::DISALLOWED_TAG) {
             if (isset($error->params[0]) &&
-                in_array($error->params[0], array('img', 'video', 'audio', 'iframe', 'font'])
+                in_array($error->params[0], array('img', 'video', 'audio', 'iframe', 'font'))
             ) {
                 return ErrorCategoryCode::DISALLOWED_HTML_WITH_AMP_EQUIVALENT;
             }
@@ -349,23 +349,23 @@ class RenderValidationResult
 
         if (in_array($error->code, array(ValidationErrorCode::DISALLOWED_PROPERTY_IN_ATTR_VALUE,
                 ValidationErrorCode::INVALID_PROPERTY_VALUE_IN_ATTR_VALUE,
-                ValidationErrorCode::MANDATORY_PROPERTY_MISSING_FROM_ATTR_VALUE]) &&
+                ValidationErrorCode::MANDATORY_PROPERTY_MISSING_FROM_ATTR_VALUE)) &&
             isset($error->params[2]) && $error->params[2] === 'meta name=viewport'
         ) {
             return ErrorCategoryCode::MANDATORY_AMP_TAG_MISSING_OR_INCORRECT;
         }
 
         if (in_array($error->code, array(ValidationErrorCode::ATTR_VALUE_REQUIRED_BY_LAYOUT, ValidationErrorCode::IMPLIED_LAYOUT_INVALID,
-                ValidationErrorCode::SPECIFIED_LAYOUT_INVALID]) ||
+                ValidationErrorCode::SPECIFIED_LAYOUT_INVALID)) ||
             ($error->code === ValidationErrorCode::INCONSISTENT_UNITS_FOR_WIDTH_AND_HEIGHT ||
                 (($error->code === ValidationErrorCode::INVALID_ATTR_VALUE || $error->code === ValidationErrorCode::MANDATORY_ATTR_MISSING) &&
-                    (isset($error->params[0]) && in_array($error->params[0], array('width', 'height', 'layout']))))
+                    (isset($error->params[0]) && in_array($error->params[0], array('width', 'height', 'layout')))))
         ) {
             return ErrorCategoryCode::AMP_LAYOUT_PROBLEM;
         }
 
         if (in_array($error->code, array(ValidationErrorCode::ATTR_DISALLOWED_BY_IMPLIED_LAYOUT,
-            ValidationErrorCode::ATTR_DISALLOWED_BY_SPECIFIED_LAYOUT])) {
+            ValidationErrorCode::ATTR_DISALLOWED_BY_SPECIFIED_LAYOUT))) {
             return ErrorCategoryCode::AMP_LAYOUT_PROBLEM;
         }
 
@@ -391,7 +391,7 @@ class RenderValidationResult
 
         if (in_array($error->code, array(ValidationErrorCode::INVALID_ATTR_VALUE,
             ValidationErrorCode::DISALLOWED_ATTR,
-            ValidationErrorCode::MANDATORY_ATTR_MISSING])
+            ValidationErrorCode::MANDATORY_ATTR_MISSING))
         ) {
             if (isset($error->params[1]) && strpos($error->params[1], 'amp-') === 0) {
                 return ErrorCategoryCode::AMP_TAG_PROBLEM;
@@ -454,7 +454,7 @@ class RenderValidationResult
 
         if (in_array($error->code, array(ValidationErrorCode::UNESCAPED_TEMPLATE_IN_ATTR_VALUE,
             ValidationErrorCode::TEMPLATE_PARTIAL_IN_ATTR_VALUE,
-            ValidationErrorCode::TEMPLATE_IN_ATTR_NAME])) {
+            ValidationErrorCode::TEMPLATE_IN_ATTR_NAME))) {
             return ErrorCategoryCode::AMP_HTML_TEMPLATE_PROBLEM;
         }
 
@@ -475,7 +475,7 @@ class RenderValidationResult
         if ((in_array($error->code, array(ValidationErrorCode::MISSING_URL,
             ValidationErrorCode::INVALID_URL,
             ValidationErrorCode::INVALID_URL_PROTOCOL,
-            ValidationErrorCode::DISALLOWED_RELATIVE_URL]))
+            ValidationErrorCode::DISALLOWED_RELATIVE_URL)))
         ) {
             if (isset($error->params[1]) && strpos($error->params[1], 'amp-') === 0) {
                 return ErrorCategoryCode::AMP_TAG_PROBLEM;

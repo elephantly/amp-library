@@ -87,7 +87,7 @@ class TwitterTransformPass extends BasePass
         $data_cards_hidden = false;
 
         foreach ($el->attr() as $attr_name => $attr_value) {
-            if (mb_strpos($attr_name, 'data-', 0, 'UTF-8') !== 0 && !in_array($attr_name, array('width', 'height'])) {
+            if (mb_strpos($attr_name, 'data-', 0, 'UTF-8') !== 0 && !in_array($attr_name, array('width', 'height'))) {
                 continue;
             }
 

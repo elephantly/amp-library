@@ -89,10 +89,11 @@ class InstagramTransformPass extends BasePass
         $el->attr('height', self::DEFAULT_INSTAGRAM_HEIGHT);
 
         $client = new Client();
+
         try {
             $res = $client->get('https://api.instagram.com/oembed/', array(
-                'query' => array('url' => $url]
-            ]);
+                'query' => array('url' => $url)
+            ))->send();
         } catch (HttpException $e) {
             return $e->getMessage() . PHP_EOL . 'Could not make request to instagram oembed endpoint. Setting default height and width';
         }

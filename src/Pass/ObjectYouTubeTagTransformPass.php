@@ -136,18 +136,18 @@ class ObjectYouTubeTagTransformPass extends BasePass
                       (?:-nocookie)?   # youtube-nocookie.com
                       \.com            # followed by
                       \S*?             # Allow anything up to VIDEO_ID,
-                      array(^\w\s-]         # but char before ID is non-ID char.
+                      [^\w\s-]         # but char before ID is non-ID char.
                     )                  # End host alternatives.
                     ([\w-]{11})        # $1: VIDEO_ID is exactly 11 chars.
                     (?=[^\w-]|$)       # Assert next char is non-ID or EOS.
                     (?!                # Assert URL is not pre-linked.
-                      array(?=&+%\w.-]*     # Allow URL (query) remainder.
+                      [?=&+%\w.-]*     # Allow URL (query) remainder.
                       (?:              # Group pre-linked alternatives.
-                        array(\'"][^<>]*>   # Either inside a start tag,
+                        [\'"][^<>]*>   # Either inside a start tag,
                       | </a>           # or inside <a> element text contents.
                       )                # End recognized pre-linked alts.
                     )                  # End negative lookahead assertion.
-                    array(?=&+%\w.-]*       # Consume any URL (query) remainder.
+                    [?=&+%\w.-]*       # Consume any URL (query) remainder.
                     ~ix';
                 if (preg_match($pattern, $param_value, $matches)) {
                     if (!empty($matches[1])) {
