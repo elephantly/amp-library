@@ -681,7 +681,7 @@ class ParsedTagSpec
             return;
         }
 
-        if (in_array($layout, array(AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::RESPONSIVE])
+        if (in_array($layout, array(AmpLayoutLayout::FIXED, AmpLayoutLayout::FIXED_HEIGHT, AmpLayoutLayout::RESPONSIVE))
             && !$height->is_set
         ) {
             $context->addError(ValidationErrorCode::MANDATORY_ATTR_MISSING,
@@ -697,7 +697,7 @@ class ParsedTagSpec
             return;
         }
 
-        if (in_array($layout, array(AmpLayoutLayout::FIXED, AmpLayoutLayout::RESPONSIVE])) {
+        if (in_array($layout, array(AmpLayoutLayout::FIXED, AmpLayoutLayout::RESPONSIVE))) {
             if (!$width->is_set) {
                 $context->addError(ValidationErrorCode::MANDATORY_ATTR_MISSING,
                     array('width', self::getTagSpecName($this->spec)), $this->spec->spec_url, $result);
