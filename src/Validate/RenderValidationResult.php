@@ -27,10 +27,10 @@ use Lullabot\AMP\AMP;
  * Class RenderValidationResult
  * @package Lullabot\AMP\Validate
  *
- * This class does not exist in the canonical validator array(1].  Rather, its a mishmash of some useful functions
+ * This class does not exist in the canonical validator[1].  Rather, its a mishmash of some useful functions
  * ported from the JavaScript canonical validator into PHP and then agglomerated in this class.
  *
- * array(1] See https://github.com/ampproject/amphtml/blob/master/validator/validator.js
+ *[1] See https://github.com/ampproject/amphtml/blob/master/validator/validator.js
  *     Also see https://github.com/ampproject/amphtml/blob/master/validator/validator-full.js
  */
 class RenderValidationResult
@@ -107,7 +107,7 @@ class RenderValidationResult
         // We don't have col number unfortunately
         $error_line = '- ' . $this->renderErrorMessage($validation_error);
         if (!empty($validation_error->code)) {
-            $error_line .= PHP_EOL . "   array(code: {$validation_error->code} ";
+            $error_line .= PHP_EOL . "  [code: {$validation_error->code} ";
         }
         if (!empty($validation_error->category)) {
             $error_line .= " category: {$validation_error->category}";
