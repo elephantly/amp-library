@@ -1,15 +1,16 @@
 {
-    "name": "lullabot/amp",
-    "description": "A set of useful classes and utilities to convert html to AMP html (See https://www.ampproject.org/)",
+    "name": "elephantly/amp-converter",
+    "description": "Portage of https://github.com/Lullabot/amp-library for PHP 53",
     "authors": [
         {
-            "name": "Sidharth Kshatriya",
-            "email": "sid.kshatriya@gmail.com"
+            "name": "PurpleBabar",
+            "email": "lalung.alexandre@gmail.com"
         }
     ],
     "license": "Apache-2.0",
-    "keywords": ["Drupal", "AMP", "mobile"],
-    "homepage": "https://github.com/Lullabot/amp-library",
+    "keywords": [],
+    "version": "1.0.0",
+    "homepage": "https://github.com/elephantly/amp-library",
     "require" : {
         "php" : ">=5.3.0",
         "querypath/QueryPath": ">=3.0.4",
